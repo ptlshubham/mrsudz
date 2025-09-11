@@ -4,7 +4,7 @@
 :root {
   --primary-color: #00f0ff;
   --primary-color-rgb: 0, 240, 255;
-  --popup-bg-img: url("/images/mr-sudz/popup/1.jpg");
+  --popup-bg-img: url("/images/mr-sudz/gallery/2.jpg");
   --popup-overlay: rgba(0, 0, 0, 0.85);
   --popup-card-bg: rgba(0, 0, 0, 0.65);
   --popup-radius: 14px;
