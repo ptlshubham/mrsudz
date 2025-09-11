@@ -341,9 +341,9 @@ header.smaller #mainmenu ul ul {
 }
 
 header.smaller {
-  position: fixed;
+  /* position: fixed; */
   top: 0px;
-  background: var(--bg-dark-1);
+  background: #00f0ff80;
   border: none;
 }
 
