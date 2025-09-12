@@ -52,9 +52,12 @@
             ctaBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 closePopup();
-                const target = document.querySelector('#contact');
-                if (target) { target.scrollIntoView({ behavior: 'smooth' }); }
+                window.open(
+                    "https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection",
+                    "_blank"
+                );
             });
         }
+
     });
 })();
