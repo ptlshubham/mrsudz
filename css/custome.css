@@ -316,3 +316,152 @@
 }
 
 /* buttons */
+/* Popup layout with centered logo on left */
+/* Popup layout with centered logo on left */
+.popup-body-with-logo {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  text-align: left;
+  min-height: 300px;
+}
+
+.popup-logo-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 100%;
+  min-height: 300px;
+}
+
+.popup-logo-left img {
+  max-width: 100%;
+  height: auto;
+}
+
+.popup-content-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+}
+
+.popup-benefits {
+  margin: 20px 0;
+  flex-grow: 1;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.benefits-list li {
+  padding: 8px 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Button container */
+.popup-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.popup-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.primary-btn {
+  background-color: #00f0ff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.primary-btn:hover {
+  background-color: #00d4e6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 25px rgba(0, 240, 255, 0.5);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.secondary-btn:hover {
+  background-color: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .popup-body-with-logo {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .popup-logo-left {
+    width: 100%;
+    min-height: auto;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .popup-logo-left img {
+    height: 100px;
+  }
+
+  .popup-content-right {
+    min-height: auto;
+  }
+
+  .popup-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .app-store-btn img {
+    width: 120px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-body-with-logo {
+    gap: 15px;
+  }
+
+  .popup-logo-left img {
+    height: 80px;
+  }
+
+  .benefits-list li {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+
+  .popup-buttons {
+    gap: 8px;
+  }
+}
