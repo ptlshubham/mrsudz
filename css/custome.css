@@ -291,4 +291,26 @@
   box-shadow: 0 0 12px rgba(var(--primary-color-rgb), 0.4);
 }
 
-/* promo banner  */
+/* for the icons */
+.icon-img {
+  width: 40px; /* same size as your fs-40 icon */
+  height: 40px; /* keep it square */
+  position: absolute; /* if you want it positioned like icofont */
+  left: 0; /* same as start-0 */
+}
+
+/* membership */
+
+.highlight-text {
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+.ul-style-2 li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.ul-style-2 li:hover {
+  transform: scale(1.05);
+  color: #00f0ff;
+}
