@@ -64,11 +64,20 @@
                         <strong>Starting at just $25/month</strong>
                     </p>
                     <div class="d-flex justify-center gap-3 ">
-                
-                    <a href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection" 
-                       id="popup-cta" class="popup-btn" target="_blank">Join Now!</a>
-                       <a href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection" 
-                       id="popup-cta" class="popup-btn" target="_blank">Join Now!</a>
+              <a href="https://mywashmembership.app.link/kexLEqgqrLb/?customer_id=eb90708c-b71f-418a-8146-c161836042b2" 
+   id="popup-cta" target="_blank" 
+   onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
+   onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+   <img src="/images/mr-sudz/buttons/Apple_App_Button2x-9460183.webp" alt="Join Now" style="height:50px;">
+</a>
+
+<a href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection" 
+   id="popup-cta" target="_blank" 
+   onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
+   onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+   <img src="/images/mr-sudz/buttons/Google_App_Button2x-9460183.webp" alt="Join Now" style="height:50px;">
+</a>
+
                        </div>
                 </div>
             </div>
