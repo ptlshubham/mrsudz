@@ -293,12 +293,17 @@
 
 /* for the icons */
 .icon-img {
+  width: 60px; /* same size as your fs-40 icon */
+  height: 60px; /* keep it square */
+  position: absolute; /* if you want it positioned like icofont */
+  left: 0; /* same as start-0 */
+}
+.counter-icon {
   width: 40px; /* same size as your fs-40 icon */
   height: 40px; /* keep it square */
   position: absolute; /* if you want it positioned like icofont */
   left: 0; /* same as start-0 */
 }
-
 /* membership */
 
 .highlight-text {
