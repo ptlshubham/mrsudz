@@ -473,3 +473,20 @@
 .text-color {
   color: #00f0ff;
 }
+@keyframes coolBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-1deg);
+  }
+}
+
+img[src*="packages/1.png"]:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 5px 15px rgba(0, 240, 255, 0.6));
+}
