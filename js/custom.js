@@ -3,7 +3,6 @@
     const CLOSE_ID = 'popup-close';
     const CTA_ID = 'popup-cta';
     const SHOW_DELAY_MS = 600;
-    const JOIN_CLUB_BTN_CLASS = 'btn-line'; // Class for the Join Wash Club button
     const BASIC_WASH_BTN_ID = 'btn-basic-wash'; // ID for the Basic Wash button
 
     const overlay = () => document.getElementById(OVERLAY_ID);
@@ -243,15 +242,14 @@
         }
 
         // Add event listener for Join Wash Club button
-        const joinClubBtn = document.querySelector('.' + JOIN_CLUB_BTN_CLASS);
+        const joinClubBtn = document.getElementById('join-wash-club');
         if (joinClubBtn) {
             joinClubBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
-                showJoinClubContent(); // Switch to join club content
-                openPopup(); // Open the popup
+                e.stopPropagation();
+                // open the link in a new tab (use href so the link stays DRY)
+                window.open(joinClubBtn.href, '_blank');
             });
         }
-
         // Add event listener for Basic Wash button
         const basicWashBtn = document.getElementById(BASIC_WASH_BTN_ID);
         if (basicWashBtn) {
