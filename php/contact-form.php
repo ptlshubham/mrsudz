@@ -115,7 +115,7 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
     $mail->addAddress('het@keryar.com'); // internal copy
 
     $mail->isHTML(true);
-    $mail->Subject = 'Thank You for Contacting Saphalya Corporation';
+    $mail->Subject = 'Thank You for Contacting mrsudz car wash';
     $mail_body = '<html><body style="font-family: Arial, sans-serif;">
         <h2>Thank You for Reaching Out!</h2>
         <p>Dear ' . htmlspecialchars($form_name, ENT_QUOTES, 'UTF-8') . ',</p>
@@ -126,7 +126,7 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
             <li><strong>Phone:</strong> ' . htmlspecialchars($contact_phone, ENT_QUOTES, 'UTF-8') . '</li>
             <li><strong>Message:</strong> ' . nl2br(htmlspecialchars($contact_message, ENT_QUOTES, 'UTF-8')) . '</li>
         </ul>
-        <p>Best regards,<br>Saphalya Corporation Team</p>
+        <p>Best regards,<br>mrsudz car wash Team</p>
         </body></html>';
     $mail->Body = $mail_body;
 
