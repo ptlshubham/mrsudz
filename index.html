@@ -143,6 +143,7 @@
                                     </li>
                                     <li><a class="menu-item" href="#why-join-the-club">Why Join the Club</a></li>
                                     <li><a class="menu-item" href="#fundraising">Fundraising</a></li>
+                                    <li><a class="menu-item" href="#accutrac-360-i">Accutrac® 360-i</a></li>
                                 </ul>
                             </div>
                             <div class="de-flex-col">
@@ -160,7 +161,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </header>
         <!-- header close -->
         <!-- content begin -->
@@ -168,52 +168,76 @@
 
             <div id="top"></div>
 
-            <section class="jarallax">
-                <img src="images/mr-sudz/hero/car-wash-backdrop-banner.jpg" class="jarallax-img" alt="">
+            <section class="jarallax" style="height:100vh; position:relative; overflow:hidden;">
+                <!-- Desktop Image -->
+                <img src="images/mr-sudz/hero/car-wash-backdrop-banner.jpg" alt="Car Wash Desktop"
+                    class="jarallax-img desktop-img">
 
-                <div class="container">
-                    <div class="row g-4 gx-5 align-items-center">
-                        <div class="spacer-single d-lg-none d-sm-block"></div>
-                        <div class="col-lg-6">
-                            <div class="relative">
+                <!-- Mobile Image -->
+                <img src="images/mr-sudz/hero/430x932.jpg" alt="Car Wash Mobile" class="jarallax-img mobile-img">
 
-                                <img src="images/mr-sudz/logo/yeti.png"
-                                    class="img-fluid relative z-index-1 rounded-20px wow fadeInUp" alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 relative">
-                            <div class="relative z-index-1000">
-                                <p class="text-color mb-0 fw-600 wow fadeInUp" data-wow-delay=".2s"><i
-                                        class="icofont-badge me-2"></i>FAST, GENTLE, ECO-FRIENDLY
-                                </p>
-                                <div class="spacer-20"></div>
-                                <h1 class="wow fadeInUp text-white" data-wow-delay=".4s">Touchless Car Wash
-                                </h1>
-                                <div class="col-lg-10">
-                                    <p class="wow fadeInUp fw-bold text-white" data-wow-delay=".6s">Your car deserves
-                                        better. With our 24/7 touchless system, you’ll enjoy a fast, damage-free wash
-                                        that leaves every finish shining.</p>
-                                </div>
-                                <div class="spacer-10"></div>
-
-                                <a class="btn-main text-dark fadeInUp" href="#wash-packages"
-                                    style="box-shadow: 0 0 20px #00f0ff;">View Packages</a>
-
-                                <div class="d-inline">
-                                    <span class="btn-play-wrap wow fadeIn" data-wow-delay=".8s">
-                                        <a id="play-video" class="video-play-button popup-youtube mt-20"
-                                            href="/images/mr-sudz/videos/video1.mp4"><span></span>
-                                        </a>
-                                        <!-- <span>Play Video</span> -->
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="hero-content">
+                    <a class="btn-view btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
+                        href="#wash-packages" style="box-shadow: 0 0 20px #00f0ff;">
+                        View Package
+                    </a>
+                    <!-- <a href="#packages" class="btn-view">View Package</a> -->
                 </div>
             </section>
+
+            <style>
+                /* Common image styles */
+                .jarallax-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                }
+
+                /* By default, hide mobile image */
+                .mobile-img {
+                    display: none;
+                }
+
+                /* On smaller screens, hide desktop image and show mobile */
+                @media (max-width: 768px) {
+                    .desktop-img {
+                        display: none;
+                    }
+
+                    .mobile-img {
+                        display: block;
+                    }
+                }
+
+                /* Center the content */
+                .hero-content {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                }
+
+                /* Button style */
+                .btn-view {
+                    background: #00f0ff;
+                    color: #fff;
+                    padding: 12px 24px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    transition: 0.3s ease;
+                }
+
+                /* .btn-view:hover {
+                    background: #e55a00;
+                } */
+            </style>
 
 
             <!-- <section>
@@ -241,7 +265,7 @@
 
                         <!-- Best Wash Package -->
                         <div class="col-lg-4 col-sm-6 wow scaleIn">
-                            <div class="relative text-light p-4 rounded-20px hover"
+                            <div class="relative text-light p-3 rounded-20px hover"
                                 style="background: url('images/mr-sudz/packages/turbo-wash.jpg') center/cover no-repeat; box-shadow: 0 0 20px #00f0ff">
 
                                 <div class="text-center">
@@ -253,7 +277,7 @@
 
                                     <!-- Highlighted Section -->
                                     <div class="price-box animate__animated animate__pulse animate__infinite">
-                                        <p class="mt-3 fs-14 mb-0 lh-1-2em fw-600 id-color">Wash Club</p>
+                                        <p class=" fs-14 mb-0 lh-1-2em fw-600 id-color">Wash Club</p>
                                         <p class="fs-36 mb-3 fw-bold text-white highlight-text">$35 / month</p>
                                         <p class="dark-text">$18 Single Wash</p>
                                     </div>
@@ -281,7 +305,7 @@
 
                         <!-- Batter Wash Package -->
                         <div class="col-lg-4 col-sm-6 wow scaleIn">
-                            <div class="relative text-light p-4 rounded-20px hover"
+                            <div class="relative text-light p-3 rounded-20px hover"
                                 style="background: url('images/mr-sudz/packages/turbo-wash.jpg') center/cover no-repeat; box-shadow: 0 0 20px #00f0ff">
 
                                 <div class="text-center">
@@ -295,7 +319,7 @@
 
                                     <!-- Highlighted Section -->
                                     <div class="price-box animate__animated animate__pulse animate__infinite">
-                                        <p class="mt-3 fs-14 mb-0 lh-1-2em fw-600 id-color ">Wash Club</p>
+                                        <p class=" fs-14 mb-0 lh-1-2em fw-600 id-color ">Wash Club</p>
                                         <p class="fs-36 mb-3 fw-bold text-white highlight-text">$30 / month</p>
                                         <p class="dark-text">$15 Single Wash</p>
                                     </div>
@@ -323,7 +347,7 @@
                         <!-- Basic Wash Package -->
 
                         <div class="col-lg-4 col-sm-6 wow scaleIn">
-                            <div class="relative text-light p-4 rounded-20px hover"
+                            <div class="relative text-light p-3 rounded-20px hover"
                                 style="background: url('images/mr-sudz/packages/turbo-wash.jpg') center/cover no-repeat; box-shadow: 0 0 20px #00f0ff">
 
                                 <div class="text-center">
@@ -337,7 +361,7 @@
 
                                     <!-- Highlighted Section -->
                                     <div class="price-box animate__animated animate__pulse animate__infinite">
-                                        <p class="mt-3 fs-14 mb-0 lh-1-2em fw-600 id-color">Wash Club</p>
+                                        <p class="fs-14 mb-0 lh-1-2em fw-600 id-color">Wash Club</p>
                                         <p class="fs-36 mb-3 fw-bold text-white highlight-text ">$25 / month</p>
                                         <p class="text-light">$10 Single Wash</p>
                                     </div>
@@ -662,10 +686,149 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="jarallax">
+                <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img" alt="Accutrac 360-i Background">
+                <div class="container">
+                    <div class="row g-4 gx-5 align-items-center">
+
+                        <!-- Left Side: Image & Highlight -->
+                        <div class="col-lg-6">
+                            <div class="relative">
+                                <img src="images/mr-sudz/petit/1.jpg" class="img-fluid rounded-20px wow fadeInUp"
+                                    alt="Accutrac® 360-i">
+                                <div class="bg-color text-light p-4 absolute start-10 w-80 mt-70 rounded-10px sm-hide">
+                                    <div class="row g-4 align-items-center">
+                                        <div class="col-lg-5 text-center fw-bold text-dark">
+                                            <div class="de_count wow fadeInRight fw-bold" data-wow-delay=".2s">
+                                                <h3 class="fs-60 fw-bold text-dark">
+                                                    <span class="timer fs-60 fw-bold" data-to="29"
+                                                        data-speed="3000">0</span>+
+                                                </h3>
+                                                Cars Per Hour
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <p class="no-bottom text-dark fw-bold">
+                                                Fast, efficient, and engineered for durability with minimal maintenance.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Content -->
+                        <div class="col-lg-6" id="accutrac-360-i">
+                            <div class="subtitle bg-color text-dark wow fadeInUp mb-3">Advanced Wash System</div>
+                            <h2 class="text-color">Accutrac® 360-i: Built for Performance</h2>
+                            <p class="mb-4 text-white fw-bold">
+                                At Mr. Sudz, we use the Accutrac® 360-i – a premium car wash system powered by
+                                Petit’s cutting-edge engineering. Built with long-lasting durability, it delivers
+                                rapid wash cycles and consistent quality results, ensuring your vehicle gets the
+                                best wash every time.
+                            </p>
+
+                            <div class="row">
+                                <!-- Brochure -->
+                                <div class="col-lg-6">
+                                    <a href="https://online.fliphtml5.com/qheya/xaed/#p=5" target="_blank"
+                                        class="d-block relative bg-dark text-white p-3 rounded-10px text-decoration-none">
+                                        <i class="bg-dark id-color p-3 rounded-10px fs-48 mb-4 icofont-papers"></i>
+                                        <h4 class="text-color">Download Brochure</h4>
+                                        <p class="text-white fw-bold">
+                                            Get detailed specifications and performance insights.
+                                        </p>
+                                    </a>
+                                </div>
+
+                                <!-- Catalog -->
+                                <div class="col-lg-6">
+                                    <a href="/images/mr-sudz/petit-catalog.pdf" target="_blank"
+                                        class="d-block relative bg-dark text-white p-3 rounded-10px text-decoration-none">
+                                        <i
+                                            class="bg-dark id-color p-3 rounded-10px fs-48 mb-4 icofont-sale-discount"></i>
+                                        <h4 class="text-color">Catalog</h4>
+                                        <p class="text-white fw-bold">
+                                            Explore Petit’s complete car wash solutions.
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </section>
+
+
+            <section class="jarallax">
+                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img"
+                    alt="Benefits Accutrac® 360-i">
+
+                <div class="container">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-12">
+                            <h2 class="wow fadeInUp mb-0 text-color">Benefits Accutrac® 360-i</h2>
+                        </div>
+
+                        <!-- Benefit 1 -->
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
+                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
+                                <i class="id-color p-2 rounded-10px fs-56 icofont-speed-meter"></i>
+                                <h4 class="mt-2">2-3 Minute Washes</h4>
+                            </div>
+                        </div>
+
+                        <!-- Benefit 2 -->
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".3s">
+                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
+                                <i class="id-color p-2 rounded-10px fs-56 icofont-building-alt"></i>
+                                <h4 class="mt-2">8'4 Clearance</h4>
+                            </div>
+                        </div>
+
+                        <!-- Benefit 3 -->
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
+                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
+                                <i class="id-color p-2 rounded-10px fs-56 icofont-car"></i>
+                                <h4 class="mt-2">29 Cars / Hour</h4>
+                            </div>
+                        </div>
+
+                        <!-- Benefit 4 -->
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".5s">
+                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
+                                <i class="id-color p-2 rounded-10px fs-56 icofont-ui-settings"></i>
+                                <h4 class="mt-2">Low Maintenance</h4>
+                            </div>
+                        </div>
+
+                        <!-- Benefit 5 -->
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
+                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
+                                <i class="id-color p-2 rounded-10px fs-56 icofont-shield"></i>
+                                <h4 class="mt-2">Durable Engineering</h4>
+                            </div>
+                        </div>
+
+                        <!-- Benefit 6 -->
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".7s">
+                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
+                                <i class="id-color p-2 rounded-10px fs-56 icofont-sun-alt"></i>
+                                <h4 class="mt-2">Consistent Cleaning Quality</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
             <section class="jarallax" id="fundraising">
                 <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img"
                     alt="Fundraising with Luxe Car Wash">
