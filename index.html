@@ -237,6 +237,68 @@
                 /* .btn-view:hover {
                     background: #e55a00;
                 } */
+
+                /* Enhanced Glow Effects for Package Images */
+                .glow-effect-basic {
+                    filter: drop-shadow(0 0 15px #00f0ff) drop-shadow(0 0 30px #00f0ff);
+                    border-radius: 15px;
+                }
+
+                .glow-effect-basic:hover {
+                    filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 50px #00f0ff) drop-shadow(0 0 75px #00f0ff);
+                    transform: scale(1.1);
+                }
+
+                /* Keyframe animations */
+                @keyframes glowPulse {
+
+                    0%,
+                    100% {
+                        filter: drop-shadow(0 0 15px #00f0ff) drop-shadow(0 0 30px #00f0ff);
+                        transform: scale(1);
+                    }
+
+                    50% {
+                        filter: drop-shadow(0 0 25px #00f0ff) drop-shadow(0 0 45px #00f0ff) drop-shadow(0 0 60px #00f0ff);
+                        transform: scale(1.05);
+                    }
+                }
+
+                @keyframes floatUpDown {
+
+                    0%,
+                    100% {
+                        transform: translateY(0px);
+                    }
+
+                    50% {
+                        transform: translateY(-10px);
+                    }
+                }
+
+                /* Sparkle effect overlay */
+                .glow-effect-basic::before {
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    right: -5px;
+                    bottom: -5px;
+                    background: linear-gradient(45deg, transparent 30%, rgba(0, 240, 255, 0.3) 50%, transparent 70%);
+                    border-radius: 15px;
+                    z-index: -1;
+                    animation: sparkle 2s linear infinite;
+                }
+
+                @keyframes sparkle {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
             </style>
 
 
@@ -270,8 +332,10 @@
 
                                 <div class="text-center">
                                     <div class="d-block mt-4">
-                                        <img src="images/mr-sudz/packages/best-wash.gif" class="w-80 relative z-1000"
-                                            style="animation: glowPulse 2.5s ease-in-out infinite; transition: all 0.3s ease;"
+
+                                        <img src="images/mr-sudz/packages/Best.png"
+                                            class="w-80 relative z-1000 glow-effect-basic"
+                                            style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
                                             alt="Best Wash">
                                     </div>
 
@@ -312,9 +376,13 @@
                                     <!-- <h4 class="bg-color text-dark p-1 rounded-5">Batter Wash</h4> -->
 
                                     <div class="d-block mt-4">
-                                        <img src="images/mr-sudz/packages/batter-wash.gif" class="w-80 relative z-1000"
-                                            style="animation: glowPulse 2.5s ease-in-out infinite; transition: all 0.3s ease;"
+                                        <img src="images/mr-sudz/packages/Batter.png"
+                                            class="w-80 relative z-1000 glow-effect-basic"
+                                            style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
                                             alt="batter Wash">
+                                        <!-- <img src="images/mr-sudz/packages/batter-wash.gif" class="w-80 relative z-1000"
+                                            style="animation: glowPulse 2.5s ease-in-out infinite; transition: all 0.3s ease;"
+                                            alt="batter Wash"> -->
                                     </div>
 
                                     <!-- Highlighted Section -->
@@ -354,8 +422,9 @@
                                     <!-- <h4 class="bg-color text-dark p-1 rounded-5">Basic Wash</h4> -->
 
                                     <div class="d-block mt-4">
-                                        <img src="images/mr-sudz/packages/basic-wash.gif" class="w-80 relative z-1000"
-                                            style="animation: glowPulse 2.5s ease-in-out infinite; transition: all 0.3s ease;"
+                                        <img src="images/mr-sudz/packages/Basic.png"
+                                            class="w-80 relative z-1000 glow-effect-basic"
+                                            style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
                                             alt="basic Wash">
                                     </div>
 
