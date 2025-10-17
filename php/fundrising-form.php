@@ -82,7 +82,7 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
         throw new \Exception("Database connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "INSERT INTO `contact` (`name`, `email`, `phone`, `message`) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO `fundrising` (`name`, `email`, `phone`, `message`) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     if (!$stmt) {
         throw new \Exception("Prepare failed: " . mysqli_error($conn));
