@@ -1039,7 +1039,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="g-recaptcha" data-sitekey="6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT"></div>
+                                <div class="g-recaptcha" id="fundraising-recaptcha"
+                                    data-sitekey="6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT"></div>
                                 <div id="submit" class="mt20">
                                     <input type="submit" id="send_message" value="Send Message"
                                         class="btn-main text-dark">
@@ -1475,7 +1476,8 @@
                                     </div>
                                 </div>
 
-                                <div class="g-recaptcha" data-sitekey="6Ld1Ru0rAAAAAHf0hY0BXPvlgzxdJAji3zssRiwM"></div>
+                                <div class="g-recaptcha" id="contact-recaptcha"
+                                    data-sitekey="6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT"></div>
                                 <div id='submit' class="mt20">
                                     <input type='submit' id='send_message' value='Send Message'
                                         class="btn-main text-dark">
@@ -1684,7 +1686,25 @@
 
     <!-- Javascript Files
     ================================================== -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        // Callback function for reCAPTCHA initialization
+        function onRecaptchaLoad() {
+            // Render contact form reCAPTCHA
+            if (document.getElementById('contact-recaptcha')) {
+                window.contactRecaptchaId = grecaptcha.render('contact-recaptcha', {
+                    'sitekey': '6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT'
+                });
+            }
+
+            // Render fundraising form reCAPTCHA
+            if (document.getElementById('fundraising-recaptcha')) {
+                window.fundraisingRecaptchaId = grecaptcha.render('fundraising-recaptcha', {
+                    'sitekey': '6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT'
+                });
+            }
+        }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
 
     <script src="js/custom.js"></script>
 
@@ -1701,7 +1721,6 @@
                 e.preventDefault();
 
                 var form = $(this);
-                // adapt to your submit control (you use <input type="submit" id="send_message">)
                 var submit = form.find('input[type="submit"], button[type="submit"]');
                 var originalText = submit.is('input') ? submit.val() : submit.text();
 
@@ -1710,21 +1729,28 @@
                 if (submit.is('input')) submit.val('Sending...');
                 else submit.text('Sending...');
 
-                // ensure grecaptcha exists and get token
+                // ensure reCAPTCHA exists
                 if (typeof grecaptcha === 'undefined') {
-                    showError('reCAPTCHA not loaded. Refresh the page or check console for errors.');
+                    showError('reCAPTCHA not loaded. Please refresh the page.');
                     restoreButton();
                     return;
                 }
 
-                var recaptchaToken = grecaptcha.getResponse();
+                // Get response from the specific contact form reCAPTCHA widget
+                var contactWidget = $('#contact-recaptcha');
+                var recaptchaToken = '';
+                if (contactWidget.length > 0 && typeof window.contactRecaptchaId !== 'undefined') {
+                    recaptchaToken = grecaptcha.getResponse(window.contactRecaptchaId);
+                } else {
+                    recaptchaToken = grecaptcha.getResponse();
+                }
+
                 if (!recaptchaToken || recaptchaToken.length === 0) {
                     showError('Please complete the reCAPTCHA.');
                     restoreButton();
                     return;
                 }
 
-                // build data (serialize + explicit token to be safe)
                 var data = form.serialize() + '&g-recaptcha-response=' + encodeURIComponent(recaptchaToken);
 
                 $.ajax({
@@ -1735,39 +1761,35 @@
                     success: function (response) {
                         if (response && response.success) {
                             form[0].reset();
-                            // hide/show messages — adapt selectors to your markup
                             $('#success_message').show();
                             $('#error_message').hide();
+                            try {
+                                if (typeof window.contactRecaptchaId !== 'undefined') {
+                                    grecaptcha.reset(window.contactRecaptchaId);
+                                } else {
+                                    grecaptcha.reset();
+                                }
+                            } catch (err) { }
 
-                            // reset reCAPTCHA widget (works for v2 checkbox)
-                            try { grecaptcha.reset(); } catch (err) { }
-
-                            // optionally hide success after a timeout
                             setTimeout(function () {
                                 $('#success_message').fadeOut();
                             }, 5000);
                         } else {
-                            var msg = (response && response.message) ? response.message : 'Verification failed.';
-                            showError(msg);
+                            showError(response.message || 'Verification failed.');
                         }
                         restoreButton();
                     },
                     error: function (xhr, status, err) {
-                        // show status and raw response from server for debugging
                         var respText = xhr.responseText || '';
-                        console.error('AJAX error. status:', status, 'http:', xhr.status, 'response:', respText);
-
-                        // try to parse JSON (your PHP returns JSON with 'message')
+                        console.error('AJAX error:', status, xhr.status, respText);
                         try {
                             var parsed = JSON.parse(respText);
                             showError(parsed.message || ('Server error: ' + xhr.status));
                         } catch (parseErr) {
-                            // not JSON — show raw text (helpful for PHP warnings/fatals)
                             showError('Server error: ' + (respText ? respText : ('Status: ' + status)));
                         }
                         restoreButton();
                     }
-
                 });
 
                 function restoreButton() {
@@ -1804,7 +1826,15 @@
                     return;
                 }
 
-                var recaptchaToken = grecaptcha.getResponse();
+                // Get response from the specific fundraising form reCAPTCHA widget
+                var fundraisingWidget = $('#fundraising-recaptcha');
+                var recaptchaToken = '';
+                if (fundraisingWidget.length > 0 && typeof window.fundraisingRecaptchaId !== 'undefined') {
+                    recaptchaToken = grecaptcha.getResponse(window.fundraisingRecaptchaId);
+                } else {
+                    recaptchaToken = grecaptcha.getResponse();
+                }
+
                 if (!recaptchaToken || recaptchaToken.length === 0) {
                     showError('Please complete the reCAPTCHA.');
                     restoreButton();
@@ -1823,7 +1853,13 @@
                             form[0].reset();
                             $('#fundraising_success').show();
                             $('#fundraising_error').hide();
-                            try { grecaptcha.reset(); } catch (err) { }
+                            try {
+                                if (typeof window.fundraisingRecaptchaId !== 'undefined') {
+                                    grecaptcha.reset(window.fundraisingRecaptchaId);
+                                } else {
+                                    grecaptcha.reset();
+                                }
+                            } catch (err) { }
 
                             setTimeout(function () {
                                 $('#fundraising_success').fadeOut();

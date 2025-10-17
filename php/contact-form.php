@@ -44,7 +44,7 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
     }
 
     // reCAPTCHA verify via cURL (more reliable than file_get_contents)
-    $recaptcha_secret = '6Ld1Ru0rAAAAAC8WCw0KTVLlnOb37zxkW7V2onyQ';
+    $recaptcha_secret = '6LcYUO0rAAAAAAsUSAHWZ2gEQOXuRaT009QtLyPh';
     if (!$recaptcha_response) {
         throw new \Exception('Please complete the reCAPTCHA');
     }
