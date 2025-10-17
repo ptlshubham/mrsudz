@@ -992,23 +992,23 @@
                                 </p>
                             </div>
 
-                            <form name="contactForm" id="contact_form" class="position-relative z1000"
+                            <form name="fundraisingForm" id="fundraising_form" class="position-relative z1000"
                                 action="php/contact-form.php" method="post">
+
                                 <div class="row gx-4">
                                     <div class="col-lg-12 col-md-6 mb10">
-
                                         <div class="field-set">
-                                            <span class="d-label  fw-bold text-light">organization</span>
+                                            <span class="d-label fw-bold text-light">Organization</span>
                                             <input type="text" name="organization" id="organization"
-                                                class="form-control" placeholder="organization" required>
+                                                class="form-control" placeholder="Organization" required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 mb10">
 
+                                    <div class="col-lg-6 col-md-6 mb10">
                                         <div class="field-set">
                                             <span class="d-label text-light fw-bold">First Name</span>
                                             <input type="text" name="firstname" id="firstname" class="form-control"
-                                                placeholder="Firstname" required>
+                                                placeholder="First Name" required>
                                         </div>
 
                                         <div class="field-set">
@@ -1016,12 +1016,11 @@
                                             <input type="text" name="lastname" id="lastname" class="form-control"
                                                 placeholder="Last Name" required>
                                         </div>
-
                                     </div>
                                     <div class="col-lg-6 col-md-6 mb10">
                                         <div class="field-set">
                                             <span class="d-label text-light fw-bold">Email</span>
-                                            <input type="text" name="Email" id="email" class="form-control"
+                                            <input type="email" name="email" id="email" class="form-control"
                                                 placeholder="Your Email" required>
                                         </div>
                                         <div class="field-set">
@@ -1029,24 +1028,22 @@
                                             <input type="text" name="phone" id="phone" class="form-control"
                                                 placeholder="Your Phone" required>
                                         </div>
-
                                     </div>
-
                                 </div>
-                                <div class="g-recaptcha" data-sitekey="copy-your-sitekey-here"></div>
-                                <div id='submit' class="mt20">
-                                    <input type='submit' id='send_message' value='Send Message'
+                                <div class="g-recaptcha" data-sitekey="6Ld1Ru0rAAAAAHf0hY0BXPvlgzxdJAji3zssRiwM"></div>
+                                <div id="submit" class="mt20">
+                                    <input type="submit" id="send_message" value="Send Message"
                                         class="btn-main text-dark">
                                 </div>
 
-                                <div id="success_message" class='success'>
-                                    Your message has been sent successfully. Refresh this page if you want to send more
-                                    messages.
+                                <div id="fundraising_success" class="success" style="display:none;">
+                                    Your fundraising request has been sent successfully. We'll contact you soon!
                                 </div>
-                                <div id="error_message" class='error'>
-                                    Sorry there was an error sending your form.
+                                <div id="fundraising_error" class="error" style="display:none;">
+                                    Sorry, there was an error sending your form.
                                 </div>
                             </form>
+
 
                         </div>
                     </div>
@@ -1773,6 +1770,82 @@
                 function showError(message) {
                     $('#error_message').show().text(message);
                     $('#success_message').hide();
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#fundraising_form').on('submit', function (e) {
+                e.preventDefault();
+
+                var form = $(this);
+                var submit = form.find('input[type="submit"], button[type="submit"]');
+                var originalText = submit.is('input') ? submit.val() : submit.text();
+
+                // disable submit
+                submit.prop('disabled', true);
+                if (submit.is('input')) submit.val('Sending...');
+                else submit.text('Sending...');
+
+                // ensure reCAPTCHA exists
+                if (typeof grecaptcha === 'undefined') {
+                    showError('reCAPTCHA not loaded. Please refresh the page.');
+                    restoreButton();
+                    return;
+                }
+
+                var recaptchaToken = grecaptcha.getResponse();
+                if (!recaptchaToken || recaptchaToken.length === 0) {
+                    showError('Please complete the reCAPTCHA.');
+                    restoreButton();
+                    return;
+                }
+
+                var data = form.serialize() + '&g-recaptcha-response=' + encodeURIComponent(recaptchaToken);
+
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method') || 'POST',
+                    data: data,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response && response.success) {
+                            form[0].reset();
+                            $('#fundraising_success').show();
+                            $('#fundraising_error').hide();
+                            try { grecaptcha.reset(); } catch (err) { }
+
+                            setTimeout(function () {
+                                $('#fundraising_success').fadeOut();
+                            }, 5000);
+                        } else {
+                            showError(response.message || 'Verification failed.');
+                        }
+                        restoreButton();
+                    },
+                    error: function (xhr, status, err) {
+                        var respText = xhr.responseText || '';
+                        console.error('AJAX error:', status, xhr.status, respText);
+                        try {
+                            var parsed = JSON.parse(respText);
+                            showError(parsed.message || ('Server error: ' + xhr.status));
+                        } catch (parseErr) {
+                            showError('Server error: ' + (respText ? respText : ('Status: ' + status)));
+                        }
+                        restoreButton();
+                    }
+                });
+
+                function restoreButton() {
+                    submit.prop('disabled', false);
+                    if (submit.is('input')) submit.val(originalText);
+                    else submit.text(originalText);
+                }
+
+                function showError(message) {
+                    $('#fundraising_error').show().text(message);
+                    $('#fundraising_success').hide();
                 }
             });
         });
