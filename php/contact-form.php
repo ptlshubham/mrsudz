@@ -102,17 +102,17 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
     $mail = new PHPMailer(true);
     // SMTP config - replace and secure credentials (see note)
     $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com';
+    $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'het@keryar.com';
-    $mail->Password   = 'het@Sgbsypm@2210';
+    $mail->Username   = 'office@mrsudzcarwash.com';
+    $mail->Password   = 'kqob duwv ivtf oqwx';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
 
-    $mail->setFrom('het@keryar.com', 'Mr Sudz');
+    $mail->setFrom('office@mrsudzcarwash.com', 'Mr Sudz');
     $mail->addAddress($contact_email, $form_name); // sends confirmation to user
-    $mail->addReplyTo('het@keryar.com', 'Mr Sudz');
-    $mail->addAddress('het@keryar.com'); // internal copy
+    $mail->addReplyTo('office@mrsudzcarwash.com', 'Mr Sudz');
+    $mail->addAddress('office@mrsudzcarwash.com'); // internal copy
 
     $mail->isHTML(true);
     $mail->Subject = 'Thank You for Contacting mrsudz car wash';

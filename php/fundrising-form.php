@@ -96,16 +96,16 @@ try {
     // Send email notification
     $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com';
+    $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'het@keryar.com';
-    $mail->Password   = 'het@Sgbsypm@2210';
+    $mail->Username   = 'office@mrsudzcarwash.com';
+    $mail->Password   = 'kqob duwv ivtf oqwx';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
 
     $full_name = $firstname . ' ' . $lastname;
-    $mail->setFrom('het@keryar.com', 'Mr Sudz');
-    $mail->addAddress('het@keryar.com', 'Mr Sudz'); // Internal notification
+    $mail->setFrom('office@mrsudzcarwash.com', 'Mr Sudz');
+    $mail->addAddress('office@mrsudzcarwash.com', 'Mr Sudz'); // Internal notification
     $mail->addReplyTo($contact_email, $full_name);
     
     // Optional: Send confirmation to user
