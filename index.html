@@ -993,7 +993,7 @@
                             </div>
 
                             <form name="fundraisingForm" id="fundraising_form" class="position-relative z1000"
-                                action="php/contact-form.php" method="post">
+                                action="php/fundrising-form.php" method="post">
 
                                 <div class="row gx-4">
                                     <div class="col-lg-12 col-md-6 mb10">
@@ -1011,26 +1011,27 @@
                                                 placeholder="First Name" required>
                                         </div>
 
+                                        <div class="field-set mb10">
+                                            <span class="d-label text-light fw-bold">Email</span>
+                                            <input type="email" name="email" id="email" class="form-control"
+                                                placeholder="Your Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 gx-4 mb10">
                                         <div class="field-set">
                                             <span class="d-label text-light fw-bold">Last Name</span>
                                             <input type="text" name="lastname" id="lastname" class="form-control"
                                                 placeholder="Last Name" required>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 mb10">
-                                        <div class="field-set">
-                                            <span class="d-label text-light fw-bold">Email</span>
-                                            <input type="email" name="email" id="email" class="form-control"
-                                                placeholder="Your Email" required>
-                                        </div>
-                                        <div class="field-set">
-                                            <span class="d-label text-light fw-bold">Phone</span>
-                                            <input type="text" name="phone" id="phone" class="form-control"
+
+                                        <div class="field-set mb10">
+                                            <span class="d-label text-light fw-bold">Contact Number</span>
+                                            <input type="text" name="contact" id="contact" class="form-control"
                                                 placeholder="Your Phone" required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="g-recaptcha" data-sitekey="6Ld1Ru0rAAAAAHf0hY0BXPvlgzxdJAji3zssRiwM"></div>
+                                <div class="g-recaptcha" data-sitekey="6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT"></div>
                                 <div id="submit" class="mt20">
                                     <input type="submit" id="send_message" value="Send Message"
                                         class="btn-main text-dark">

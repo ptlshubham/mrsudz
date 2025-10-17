@@ -1,50 +1,42 @@
 <?php
 namespace PortoContactForm;
 
-// do not output anything before sending JSON
 header('Content-Type: application/json; charset=utf-8');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// load composer autoload or PHPMailer requires (adjust paths)
 require __DIR__ . '/php-mailer/src/Exception.php';
 require __DIR__ . '/php-mailer/src/PHPMailer.php';
 require __DIR__ . '/php-mailer/src/SMTP.php';
 
 try {
-    // Use filter_input matching your form's field names (Name, Email, phone, message)
-   // name and message: keep HTML entities escaped
-$form_name = trim((string) filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-$contact_email = trim((string) filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    // Match form field names
+    $organization = trim((string) filter_input(INPUT_POST, 'organization', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $firstname = trim((string) filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $lastname = trim((string) filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $contact_email = trim((string) filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $contact_phone = trim((string) filter_input(INPUT_POST, 'contact', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    
+    // Sanitize phone - keep only digits, plus, spaces, parentheses, dash
+    $contact_phone = preg_replace('/[^0-9+\-\(\) ]+/', '', $contact_phone);
 
-// phone: keep only digits, plus, spaces, parentheses and dash
-$raw_phone = trim((string) filter_input(INPUT_POST, 'phone', FILTER_DEFAULT));
-$contact_phone = preg_replace('/[^0-9+\-\(\) ]+/', '', $raw_phone);
+    $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_POST['g-recaptcha-response']) : '';
 
-// message: escape special chars, preserve newlines
-$raw_message = trim((string) filter_input(INPUT_POST, 'message', FILTER_DEFAULT));
-$contact_message = htmlspecialchars($raw_message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-
-$recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_POST['g-recaptcha-response']) : '';
-
-    // Basic validation
+    // Validation
     if (!$contact_email || !filter_var($contact_email, FILTER_VALIDATE_EMAIL)) {
         throw new \Exception('Invalid email address');
     }
-    if (!$form_name || !$contact_message) {
-        throw new \Exception('Name and message are required');
+    if (!$organization || !$firstname || !$lastname) {
+        throw new \Exception('Organization, first name, and last name are required');
     }
-    if (strlen($contact_message) > 500) {
-        throw new \Exception('Message too long');
-    }
-    if (preg_match('/http|www|\.com|\.org|\.net/i', $contact_message) || strtoupper($contact_message) === $contact_message) {
-        throw new \Exception('Invalid message content');
+    if (!$contact_phone) {
+        throw new \Exception('Phone number is required');
     }
 
-    // reCAPTCHA verify via cURL (more reliable than file_get_contents)
-    $recaptcha_secret = '6Ld1Ru0rAAAAAC8WCw0KTVLlnOb37zxkW7V2onyQ';
+    // reCAPTCHA verification
+    $recaptcha_secret = '6LcYUO0rAAAAAAsUSAHWZ2gEQOXuRaT009QtLyPh';
     if (!$recaptcha_response) {
         throw new \Exception('Please complete the reCAPTCHA');
     }
@@ -71,7 +63,7 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
         throw new \Exception('CAPTCHA verification failed');
     }
 
-    // Database insert (mysqli)
+    // Database connection
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -82,25 +74,27 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
         throw new \Exception("Database connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "INSERT INTO `fundrising` (`name`, `email`, `phone`, `message`) VALUES (?, ?, ?, ?)";
+    // Fixed SQL - matches form fields
+    $sql = "INSERT INTO `fundrising` (`organization`, `firstname`, `lastname`, `email`, `phone`) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     if (!$stmt) {
         throw new \Exception("Prepare failed: " . mysqli_error($conn));
     }
 
-    // 4 strings => "ssss"
-    if (!mysqli_stmt_bind_param($stmt, "ssss", $form_name, $contact_email, $contact_phone, $contact_message)) {
+    // Bind 5 string parameters
+    if (!mysqli_stmt_bind_param($stmt, "sssss", $organization, $firstname, $lastname, $contact_email, $contact_phone)) {
         throw new \Exception("Bind param failed: " . mysqli_stmt_error($stmt));
     }
+    
     if (!mysqli_stmt_execute($stmt)) {
         throw new \Exception("Database error: " . mysqli_stmt_error($stmt));
     }
+    
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 
-    // Send email (PHPMailer)
+    // Send email notification
     $mail = new PHPMailer(true);
-    // SMTP config - replace and secure credentials (see note)
     $mail->isSMTP();
     $mail->Host       = 'smtp.hostinger.com';
     $mail->SMTPAuth   = true;
@@ -109,40 +103,46 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
 
+    $full_name = $firstname . ' ' . $lastname;
     $mail->setFrom('het@keryar.com', 'Mr Sudz');
-    $mail->addAddress($contact_email, $form_name); // sends confirmation to user
-    $mail->addReplyTo('het@keryar.com', 'Mr Sudz');
-    $mail->addAddress('het@keryar.com'); // internal copy
+    $mail->addAddress('het@keryar.com', 'Mr Sudz'); // Internal notification
+    $mail->addReplyTo($contact_email, $full_name);
+    
+    // Optional: Send confirmation to user
+    // $mail->addAddress($contact_email, $full_name);
 
     $mail->isHTML(true);
-    $mail->Subject = 'Thank You for Contacting mrsudz car wash';
+    $mail->Subject = 'New Fundraising Request - ' . $organization;
+    
     $mail_body = '<html><body style="font-family: Arial, sans-serif;">
-        <h2>Thank You for Reaching Out!</h2>
-        <p>Dear ' . htmlspecialchars($form_name, ENT_QUOTES, 'UTF-8') . ',</p>
-        <p>We’ve received your message and will get back to you soon.</p>
+        <h2>New Fundraising Request</h2>
+        <p>A new fundraising request has been submitted:</p>
         <ul>
-            <li><strong>Name:</strong> ' . htmlspecialchars($form_name, ENT_QUOTES, 'UTF-8') . '</li>
+            <li><strong>Organization:</strong> ' . htmlspecialchars($organization, ENT_QUOTES, 'UTF-8') . '</li>
+            <li><strong>Name:</strong> ' . htmlspecialchars($full_name, ENT_QUOTES, 'UTF-8') . '</li>
             <li><strong>Email:</strong> ' . htmlspecialchars($contact_email, ENT_QUOTES, 'UTF-8') . '</li>
             <li><strong>Phone:</strong> ' . htmlspecialchars($contact_phone, ENT_QUOTES, 'UTF-8') . '</li>
-            <li><strong>Message:</strong> ' . nl2br(htmlspecialchars($contact_message, ENT_QUOTES, 'UTF-8')) . '</li>
         </ul>
-        <p>Best regards,<br>mrsudz car wash Team</p>
+        <p>Please contact them to discuss their fundraising request.</p>
+        <p>Best regards,<br>Mr Sudz Car Wash Team</p>
         </body></html>';
+    
     $mail->Body = $mail_body;
 
-    // send; but if mail fails we still respond success for form saving — optional
     try {
         $mail->send();
     } catch (Exception $e) {
-        // log mail error, but do not output raw error (avoid breaking JSON)
         error_log("Mail error: " . $mail->ErrorInfo);
-        // continue — DB succeeded
+        // Don't fail the whole process if email fails
     }
 
-    echo json_encode(['success' => true, 'message' => 'Message sent successfully']);
+    echo json_encode([
+        'success' => true, 
+        'message' => 'Your fundraising request has been sent successfully. We\'ll contact you soon!'
+    ]);
 
 } catch (\Exception $e) {
-    // return a clean JSON error message only
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }
+?>
