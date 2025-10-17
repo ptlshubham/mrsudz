@@ -5,7 +5,31 @@
     const SHOW_DELAY_MS = 600;
     const BASIC_WASH_BTN_ID = 'btn-basic-wash'; // ID for the Basic Wash button
 
-    const overlay = () => document.getElementById(OVERLAY_ID);
+    // Ensure the overlay exists in DOM; create it if missing (now that HTML is commented out)
+    function ensureOverlay() {
+        let el = document.getElementById(OVERLAY_ID);
+        if (!el) {
+            el = document.createElement('div');
+            el.id = OVERLAY_ID;
+            el.className = 'popup-overlay';
+            el.setAttribute('aria-hidden', 'true');
+
+            const content = document.createElement('div');
+            content.className = 'popup-content';
+            content.setAttribute('role', 'dialog');
+            content.setAttribute('aria-modal', 'true');
+            content.setAttribute('aria-labelledby', 'popup-title');
+
+            el.appendChild(content);
+            document.body.appendChild(el);
+
+            // Click outside card closes popup
+            el.addEventListener('click', (e) => { if (e.target === el) closePopup(); });
+        }
+        return el;
+    }
+
+    const overlay = () => document.getElementById(OVERLAY_ID) || ensureOverlay();
 
     function openPopup() {
         const el = overlay();
@@ -212,19 +236,16 @@
     }
 
     window.addEventListener('load', () => {
-        // Show original popup after delay (existing functionality)
-        setTimeout(openPopup, SHOW_DELAY_MS);
+        // Disable auto-open on load
+        // setTimeout(openPopup, SHOW_DELAY_MS);
 
-        const el = overlay();
-        const closeBtn = document.getElementById(CLOSE_ID);
-        const ctaBtn = document.getElementById(CTA_ID);
+    const el = overlay();
+    const closeBtn = document.getElementById(CLOSE_ID);
+    const ctaBtn = document.getElementById(CTA_ID);
 
         if (closeBtn) closeBtn.addEventListener('click', closePopup);
 
-        // Click outside card
-        if (el) {
-            el.addEventListener('click', (e) => { if (e.target === el) closePopup(); });
-        }
+        // Click outside card (already added by ensureOverlay on first create)
 
         // ESC key
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
@@ -272,9 +293,10 @@
             }, 1000);
         }
 
-        // Alternative: Add event delegation for basic wash buttons
+        // Alternative: Add robust event delegation for basic wash buttons (works if child clicked)
         document.addEventListener('click', (e) => {
-            if (e.target && e.target.id === BASIC_WASH_BTN_ID) {
+            const target = e.target && e.target.closest ? e.target.closest('#' + BASIC_WASH_BTN_ID) : null;
+            if (target) {
                 e.preventDefault();
                 showJoinClubContent();
                 openPopup();

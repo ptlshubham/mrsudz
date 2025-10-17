@@ -94,7 +94,7 @@
                                                                 <div
                                                                     class="bg-grey p-2 rounded-10px relative hover text-center">
                                                                     <a href="#wash-packages">
-                                                                        <img src="images/mr-sudz/header/batter-wash.png"
+                                                                        <img src="images/mr-sudz/header/Better-wash.png"
                                                                             class="w-100 relative z-1000 hover-scale-1-2"
                                                                             alt="">
                                                                         <img src="images/mr-sudz/logo/yeti-face.png"
@@ -107,7 +107,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <h4 class="mt-3 mb-1">Batter Wash</h4>
+                                                                <h4 class="mt-3 mb-1">Better Wash</h4>
                                                                 <p class="mb-0 fw-bold">Experience the Ultimate Clean.
                                                                 </p>
 
@@ -179,7 +179,7 @@
                 <div class="hero-content">
                     <a class="btn-view mb-3 btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
                         href="#wash-packages" style="box-shadow: 0 0 20px #00f0ff;">
-                        View Package
+                        View Packages
                     </a>
                     <!-- <a href="#packages" class="btn-view">View Package</a> -->
                 </div>
@@ -299,6 +299,35 @@
                         transform: rotate(360deg);
                     }
                 }
+
+                /* Price highlight for key price points */
+                .price-highlight {
+                    display: inline-block;
+                    padding: 2px 10px;
+                    border-radius: 8px;
+                    background: rgba(0, 240, 255, 0.12);
+                    border: 1px solid rgba(0, 240, 255, 0.6);
+                    color: #fff;
+                    text-shadow: 0 0 8px rgba(0, 240, 255, 0.8), 0 0 16px rgba(0, 240, 255, 0.6);
+                    box-shadow: 0 0 10px rgba(0, 240, 255, 0.35), inset 0 0 10px rgba(0, 240, 255, 0.15);
+                    animation: priceGlow 2s ease-in-out infinite;
+                }
+
+                @keyframes priceGlow {
+
+                    0%,
+                    100% {
+                        box-shadow: 0 0 10px rgba(0, 240, 255, 0.35), inset 0 0 10px rgba(0, 240, 255, 0.12);
+                        text-shadow: 0 0 6px rgba(0, 240, 255, 0.7), 0 0 14px rgba(0, 240, 255, 0.45);
+                        border-color: rgba(0, 240, 255, 0.6);
+                    }
+
+                    50% {
+                        box-shadow: 0 0 16px rgba(0, 240, 255, 0.6), inset 0 0 14px rgba(0, 240, 255, 0.22);
+                        text-shadow: 0 0 10px rgba(0, 240, 255, 0.95), 0 0 20px rgba(0, 240, 255, 0.7);
+                        border-color: rgba(0, 240, 255, 0.9);
+                    }
+                }
             </style>
 
 
@@ -343,14 +372,13 @@
                                     <div class="price-box animate__animated animate__pulse animate__infinite">
                                         <p class=" fs-14 mb-0 lh-1-2em fw-600 id-color">Wash Club</p>
                                         <p class="fs-36 mb-3 fw-bold text-white highlight-text">$35 / month</p>
-                                        <p class="dark-text">$18 Single Wash</p>
+                                        <p class="dark-text price-highlight">$18 Single Wash</p>
                                     </div>
                                 </div>
 
                                 <!-- Animated Includes -->
                                 <h5 class="dark-heading animate__animated animate__fadeInUp fs-3">Includes</h5>
                                 <ul class="ul-style-2 animate__animated animate__fadeInUp animate__delay-1s">
-                                    <li class="fw-bold fs-5">Best Wash +</li>
                                     <li class="fw-bold fs-5">Graphene Shine & Protect</li>
                                     <li class="fw-bold fs-5">Heated Triple Foam</li>
                                     <li class="fw-bold fs-5">Tire & Wheel Cleaner</li>
@@ -360,43 +388,42 @@
                                 <div class="text-center">
                                     <a class="btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
                                         id="btn-basic-wash" href="#">
-                                        Select Best Wash
+                                        Purchase Wash Package
                                     </a>
                                 </div>
                                 <div class="spacer-20"></div>
                             </div>
                         </div>
 
-                        <!-- Batter Wash Package -->
+                        <!-- Better Wash Package -->
                         <div class="col-lg-4 col-sm-6 wow scaleIn">
                             <div class="relative text-light p-3 rounded-20px hover"
                                 style="background: url('images/mr-sudz/packages/turbo-wash.jpg') center/cover no-repeat; box-shadow: 0 0 20px #00f0ff">
 
                                 <div class="text-center">
-                                    <!-- <h4 class="bg-color text-dark p-1 rounded-5">Batter Wash</h4> -->
+                                    <!-- <h4 class="bg-color text-dark p-1 rounded-5">Better Wash</h4> -->
 
                                     <div class="d-block mt-4">
                                         <img src="images/mr-sudz/packages/Batter.png"
                                             class="w-80 relative z-1000 glow-effect-basic"
                                             style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
-                                            alt="batter Wash">
-                                        <!-- <img src="images/mr-sudz/packages/batter-wash.gif" class="w-80 relative z-1000"
+                                            alt="Better Wash">
+                                        <!-- <img src="images/mr-sudz/packages/Better-wash.gif" class="w-80 relative z-1000"
                                             style="animation: glowPulse 2.5s ease-in-out infinite; transition: all 0.3s ease;"
-                                            alt="batter Wash"> -->
+                                            alt="Better Wash"> -->
                                     </div>
 
                                     <!-- Highlighted Section -->
                                     <div class="price-box animate__animated animate__pulse animate__infinite">
                                         <p class=" fs-14 mb-0 lh-1-2em fw-600 id-color ">Wash Club</p>
                                         <p class="fs-36 mb-3 fw-bold text-white highlight-text">$30 / month</p>
-                                        <p class="dark-text">$15 Single Wash</p>
+                                        <p class="dark-text price-highlight">$15 Single Wash</p>
                                     </div>
                                 </div>
 
                                 <!-- Animated Includes -->
                                 <h5 class="dark-heading animate__animated animate__fadeInUp fs-3">Includes</h5>
                                 <ul class="ul-style-2 animate__animated animate__fadeInUp animate__delay-1s">
-                                    <li class="fw-bold fs-5">Batter Wash +</li>
                                     <li class="fw-bold fs-5">Heated Foam Presoak</li>
                                     <li class="fw-bold fs-5">Undercarriage Wash</li>
                                     <li class="fw-bold fs-5">Clear Coat Protectant</li>
@@ -406,7 +433,7 @@
                                 <div class="text-center">
                                     <a class="btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
                                         id="btn-basic-wash" href="#">
-                                        Select Batter Wash
+                                        Purchase Wash Package
                                     </a>
                                 </div>
                                 <div class="spacer-20"></div>
@@ -432,7 +459,7 @@
                                     <div class="price-box animate__animated animate__pulse animate__infinite">
                                         <p class="fs-14 mb-0 lh-1-2em fw-600 id-color">Wash Club</p>
                                         <p class="fs-36 mb-3 fw-bold text-white highlight-text ">$25 / month</p>
-                                        <p class="text-light">$10 Single Wash</p>
+                                        <p class="text-light price-highlight">$10 Single Wash</p>
                                     </div>
                                 </div>
 
@@ -441,15 +468,15 @@
                                 <ul class="ul-style-2 animate__animated animate__fadeInUp animate__delay-1s">
                                     <li class="fw-bold fs-5">Wash</li>
                                     <li class="fw-bold  fs-5">Rinse</li>
-                                    <li class="fw-bold  fs-5 pb-4">Dry</li>
+                                    <li class="fw-bold  fs-5 ">Dry</li>
 
                                 </ul>
 
                                 <div class="spacer-20"></div>
-                                <div class="text-center pt-3">
+                                <div class="text-center ">
                                     <a class="btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
                                         id="btn-basic-wash" href="#">
-                                        Select Basic Wash
+                                        Purchase Wash Package
                                     </a>
                                 </div>
                                 <div class="spacer-20"></div>
@@ -485,7 +512,7 @@
                             <span class="d-item-txt">Affordable Packages</span>
                             <span class="d-item-display"><i class="d-item-block"></i></span>
 
-                            <span class="d-item-txt">Premium Detailing</span>
+                            <span class="d-item-txt">24/7 Open</span>
                             <span class="d-item-display"><i class="d-item-block"></i></span>
 
                             <span class="d-item-txt">Located in Columbus, Ohio</span>
@@ -803,24 +830,7 @@
                             <div class="relative">
                                 <img src="images/mr-sudz/petit/1.jpg" class="img-fluid rounded-20px wow fadeInUp"
                                     alt="Accutrac® 360-i">
-                                <div class="bg-color text-light p-4 absolute start-10 w-80 mt-70 rounded-10px sm-hide">
-                                    <div class="row g-4 align-items-center">
-                                        <div class="col-lg-5 text-center fw-bold text-dark">
-                                            <div class="de_count wow fadeInRight fw-bold" data-wow-delay=".2s">
-                                                <h3 class="fs-60 fw-bold text-dark">
-                                                    <span class="timer fs-60 fw-bold" data-to="29"
-                                                        data-speed="3000">0</span>+
-                                                </h3>
-                                                Cars Per Hour
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <p class="no-bottom text-dark fw-bold">
-                                                Fast, efficient, and engineered for durability with minimal maintenance.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 
@@ -843,67 +853,7 @@
             </section>
 
 
-            <section class="jarallax">
-                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img"
-                    alt="Benefits Accutrac® 360-i">
 
-                <div class="container">
-                    <div class="row align-items-center g-4">
-                        <div class="col-lg-12">
-                            <h2 class="wow fadeInUp mb-0 text-color">Benefits Accutrac® 360-i</h2>
-                        </div>
-
-                        <!-- Benefit 1 -->
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
-                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
-                                <i class="id-color p-2 rounded-10px fs-56 icofont-speed-meter"></i>
-                                <h4 class="mt-2">2-3 Minute Washes</h4>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 2 -->
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".3s">
-                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
-                                <i class="id-color p-2 rounded-10px fs-56 icofont-building-alt"></i>
-                                <h4 class="mt-2">8'4 Clearance</h4>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 3 -->
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
-                                <i class="id-color p-2 rounded-10px fs-56 icofont-car"></i>
-                                <h4 class="mt-2">29 Cars / Hour</h4>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 4 -->
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".5s">
-                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
-                                <i class="id-color p-2 rounded-10px fs-56 icofont-ui-settings"></i>
-                                <h4 class="mt-2">Low Maintenance</h4>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 5 -->
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
-                                <i class="id-color p-2 rounded-10px fs-56 icofont-shield"></i>
-                                <h4 class="mt-2">Durable Engineering</h4>
-                            </div>
-                        </div>
-
-                        <!-- Benefit 6 -->
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".7s">
-                            <div class="d-block relative bg-dark text-white p-2 rounded-10px text-center">
-                                <i class="id-color p-2 rounded-10px fs-56 icofont-sun-alt"></i>
-                                <h4 class="mt-2">Consistent Cleaning Quality</h4>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
 
 
 
@@ -994,7 +944,7 @@
                                 <div class="fs-40 fw-bold ">
                                     24/7
                                 </div>
-                                Hour Open Daily
+                                Open Daily
                             </div>
                         </div>
                         <!-- Touchless Technology -->
@@ -1038,8 +988,78 @@
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="container mt-5 pt-5">
+                    <div class="row g-4 gx-5">
+                        <div class="col-lg-12">
+                            <div class="col-lg-12">
+                                <h2 class="mb-0 text-color">Fundraising Application</h2>
+                                <p class="text-light">
+                                    Fill out the form below to tell us about your fundraising project, and our team will
+                                    contact you shortly.
+                                </p>
+                            </div>
 
+                            <form name="contactForm" id="contact_form" class="position-relative z1000"
+                                action="php/contact-form.php" method="post">
+                                <div class="row gx-4">
+                                    <div class="col-lg-12 col-md-6 mb10">
+
+                                        <div class="field-set">
+                                            <span class="d-label  fw-bold text-light">organization</span>
+                                            <input type="text" name="organization" id="organization"
+                                                class="form-control" placeholder="organization" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 mb10">
+
+                                        <div class="field-set">
+                                            <span class="d-label text-light fw-bold">First Name</span>
+                                            <input type="text" name="firstname" id="firstname" class="form-control"
+                                                placeholder="Firstname" required>
+                                        </div>
+
+                                        <div class="field-set">
+                                            <span class="d-label text-light fw-bold">Last Name</span>
+                                            <input type="text" name="lastname" id="lastname" class="form-control"
+                                                placeholder="Last Name" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 mb10">
+                                        <div class="field-set">
+                                            <span class="d-label text-light fw-bold">Email</span>
+                                            <input type="text" name="Email" id="email" class="form-control"
+                                                placeholder="Your Email" required>
+                                        </div>
+                                        <div class="field-set">
+                                            <span class="d-label text-light fw-bold">Phone</span>
+                                            <input type="text" name="phone" id="phone" class="form-control"
+                                                placeholder="Your Phone" required>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="g-recaptcha" data-sitekey="copy-your-sitekey-here"></div>
+                                <div id='submit' class="mt20">
+                                    <input type='submit' id='send_message' value='Send Message'
+                                        class="btn-main text-dark">
+                                </div>
+
+                                <div id="success_message" class='success'>
+                                    Your message has been sent successfully. Refresh this page if you want to send more
+                                    messages.
+                                </div>
+                                <div id="error_message" class='error'>
+                                    Sorry there was an error sending your form.
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
 
             <section class="jarallax">
                 <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img" alt="">
@@ -1326,7 +1346,7 @@
                             <span class="d-item-txt">Affordable Packages</span>
                             <span class="d-item-display"><i class="d-item-block"></i></span>
 
-                            <span class="d-item-txt">Premium Detailing</span>
+                            <span class="d-item-txt">24/7 Open</span>
                             <span class="d-item-display"><i class="d-item-block"></i></span>
 
                             <span class="d-item-txt">Located in Columbus, Ohio</span>
@@ -1351,7 +1371,7 @@
                             <div class="spacer-single"></div>
 
                             <div class="fw-bold text-color">
-                                <i class="  icofont-location-pin me-2 id-color-2"></i>Office Location
+                                <i class="  icofont-location-pin me-2 id-color-2"></i>Car Wash Location
                             </div>
                             <a href="https://www.google.com/maps/place/Mr.+Sudz+Touchless+Car+Wash/data=!4m2!3m1!1s0x0:0xd356d4d9eac24f09?sa=X&ved=1t:2428&hl=en-GB&ictx=111&cshid=1757668899391511"
                                 target="_blank" class="text-white">
@@ -1635,6 +1655,7 @@
         <!-- footer close -->
     </div>
 
+    <!--
     <div id="popup-overlay" class="popup-overlay" aria-hidden="true">
         <div class="popup-content" role="dialog" aria-modal="true" aria-labelledby="popup-title">
             <button id="popup-close" class="popup-close" aria-label="Close popup">&times;</button>
@@ -1658,6 +1679,7 @@
             <a href="#contact" id="popup-cta" class="popup-btn">Get a FREE WASH!</a>
         </div>
     </div>
+    -->
 
 
 
