@@ -64,11 +64,16 @@ try {
     }
 
     // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "mrsudz";
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $database = "mrsudz";
 
+    
+$servername = "127.0.0.1:3306";
+ $username = "u768511311_mrsudz";
+ $password = "Mrsudz@2210";
+ $database = "u768511311_mrsudz";
     $conn = mysqli_connect($servername, $username, $password, $database);
     if (!$conn) {
         throw new \Exception("Database connection failed: " . mysqli_connect_error());

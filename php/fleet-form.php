@@ -75,11 +75,16 @@ $recaptcha_response = isset($_POST['g-recaptcha-response']) ? trim((string) $_PO
         throw new \Exception('CAPTCHA verification failed');
     }
 
-    // Database insert (mysqli)
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "mrsudz";
+    // // Database insert (mysqli)
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $database = "mrsudz";
+    
+ $servername = "127.0.0.1:3306";
+ $username = "u768511311_mrsudz";
+ $password = "Mrsudz@2210";
+ $database = "u768511311_mrsudz";
 
     $conn = mysqli_connect($servername, $username, $password, $database);
     if (!$conn) {
