@@ -239,9 +239,9 @@
         // Disable auto-open on load
         // setTimeout(openPopup, SHOW_DELAY_MS);
 
-    const el = overlay();
-    const closeBtn = document.getElementById(CLOSE_ID);
-    const ctaBtn = document.getElementById(CTA_ID);
+        const el = overlay();
+        const closeBtn = document.getElementById(CLOSE_ID);
+        const ctaBtn = document.getElementById(CTA_ID);
 
         if (closeBtn) closeBtn.addEventListener('click', closePopup);
 
@@ -271,7 +271,8 @@
                 window.open(joinClubBtn.href, '_blank');
             });
         }
-        // Add event listener for Basic Wash button
+        // Add event listener for Basic Wash button - COMMENTED OUT (now redirects directly via href)
+        /*
         const basicWashBtn = document.getElementById(BASIC_WASH_BTN_ID);
         if (basicWashBtn) {
             basicWashBtn.addEventListener('click', (e) => {
@@ -302,6 +303,7 @@
                 openPopup();
             }
         });
+        */
     });
 
 })();
