@@ -37,6 +37,11 @@
         </div>
         <div class="scrollbar-v show-on-scroll"></div>
 
+        <!-- Floating Video Button -->
+        <a href="#watch-videos" class="floating-video-btn" title="Watch Videos">
+            <i class="icofont-play-alt-1"></i>
+        </a>
+
         <!-- page preloader begin -->
         <div id="de-loader"></div>
         <!-- page preloader close -->
@@ -63,9 +68,9 @@
                                     <li><a class="menu-item" href="index.html#wash-packages">Wash Packages</a></li>
                                     <li><a class="menu-item" href="index.html#why-join-the-club">Why Join the Club</a>
                                     </li>
+                                    <li><a class="menu-item" href="index.html#accutrac-360-i">Accutrac® 360-i</a></li>
                                     <li><a class="menu-item" href="fundrising.html">Fundraising</a></li>
                                     <li><a class="menu-item" href="fleet.html">Fleet</a></li>
-                                    <li><a class="menu-item" href="index.html#accutrac-360-i">Accutrac® 360-i</a></li>
                                 </ul>
                             </div>
                             <div class="de-flex-col">
@@ -276,6 +281,53 @@
                         <div class="col-lg-4 text-lg-end">
                         </div>
 
+                        <style>
+                            /* Mobile spacing for featured package (first package card) */
+                            @media (max-width: 768px) {
+                                .featured-card {
+                                    margin-left: 20px;
+                                    margin-right: 20px;
+                                    padding-left: 25px !important;
+                                    padding-right: 25px !important;
+                                    box-sizing: border-box;
+                                }
+
+                                .featured-card .d-block img {
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                    display: block;
+                                }
+                            }
+
+                            @media (max-width: 480px) {
+                                .featured-card {
+                                    margin-left: 20px;
+                                    margin-right: 20px;
+                                    padding-left: 25px !important;
+                                    padding-right: 25px !important;
+                                }
+                            }
+
+                            @media (max-width: 768px) {
+                                .col-lg-4.col-sm-6 .relative {
+                                    margin-left: 20px !important;
+                                    margin-right: 20px !important;
+                                    padding-left: 25px !important;
+                                    padding-right: 25px !important;
+                                    box-sizing: border-box;
+                                }
+                            }
+
+                            @media (max-width: 480px) {
+                                .col-lg-4.col-sm-6 .relative {
+                                    margin-left: 20px !important;
+                                    margin-right: 20px !important;
+                                    padding-left: 25px !important;
+                                    padding-right: 25px !important;
+                                }
+                            }
+                        </style>
+
                         <!-- Best Wash Package -->
                         <div class="col-lg-4 col-sm-6 wow scaleIn">
                             <div class="relative text-light p-3 rounded-20px hover"
@@ -449,14 +501,15 @@
 
 
             <section class="text-dark jarallax" id="gallery-showcase">
-                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img" alt="">
+                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img brightness-25"
+                    style="filter: brightness(0.5)" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="subtitle bg-color text-dark wow fadeInDown mb-3" data-wow-delay=".0s">What Makes
                                 Us Different</div>
                             <h2 class="wow fadeInUp text-color" data-wow-delay=".1s">See the Sudz Difference</h2>
-                            <p class="lead text-white wow fadeInUp" data-wow-delay=".2s">
+                            <p class="lead text-white wow fadeInUp fw-bolder" data-wow-delay=".2s">
                                 Experience premium car care that sets us apart from the rest
                             </p>
                             <div class="spacer-20"></div>
@@ -1084,7 +1137,8 @@
             </section> -->
             <!-- BOTTOM SECTION: Membership Has Its Clean Advantages -->
             <section class="jarallax" id="membership-advantages">
-                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img" alt="">
+                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img"
+                    style="filter: brightness(0.5);" alt="">
                 <!-- <img src="images/mr-sudz/slider/background-plain.jpg" class="jarallax-img" alt="Why Join Mr Sudz Club"> -->
 
                 <div class="container">
@@ -1362,7 +1416,7 @@
             </section> -->
 
 
-            <section class="jarallax">
+            <section class="jarallax" id="watch-videos">
                 <img src="images/mr-sudz/slider/slider.jpg" class="jarallax-img" alt="">
                 <div class="container">
                     <div class="row g-4 align-items-center">
@@ -1463,7 +1517,8 @@
                         <div class="col-lg-8 order-2 order-lg-1">
                             <div class="subtitle bg-color text-dark wow fadeInUp mb-3">Contact Us</div>
                             <h2 class="wow fadeInUp text-color" data-wow-delay=".2s">Get in Touch with Mr Sudz</h2>
-                            <p class="text-white">From wash club details to wash services, we’re here to assist you.
+                            <p class="text-white fw-bold">From wash club details to wash services, we’re here to assist
+                                you.
                                 Fill out the form with your info and message, and we’ll respond as soon as possible.
                             </p>
                             <form name="contactForm" id="contact_form" class="position-relative z1000"
@@ -1503,7 +1558,7 @@
                                     data-sitekey="6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT"></div>
                                 <div id='submit' class="mt20">
                                     <input type='submit' id='send_message' value='Send Message'
-                                        class="btn-main text-dark">
+                                        class="btn-main text-dark rounded-0">
                                 </div>
 
                                 <div id="success_message" class='success'>
@@ -1642,14 +1697,14 @@
                             <div class="fw-bold text-white">
                                 <i class="icofont-envelope me-2 id-color"></i>Email Us
                             </div>
-                            <a href="mailto:mrsudzexpress@gmail.com" class="text-color-50">mrsudzexpress@gmail.com</a>
+                            <a href="mailto:Office@mrsudzcarwash.com" class="text-color-50">Office@mrsudzcarwash.com</a>
 
                             <div class="spacer-20"></div>
 
                             <div class="fw-bold text-white">
                                 <i class="icofont-phone me-2 id-color"></i>Call Us
                             </div>
-                            <a href="tel:+16147073202" class="text-color-50">+1 (614) 707-3202</a>
+                            <a href="tel:+16148815215" class="text-color-50">+1 (614) 881-5215</a>
                         </div>
                     </div>
                 </div>
