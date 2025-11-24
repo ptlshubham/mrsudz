@@ -37,7 +37,10 @@ html {
   font-size: 20px;
   opacity: 0.95;
 }
-.video-cta-overlay .btn:focus { outline: none; box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.4); }
+.video-cta-overlay .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.4);
+}
 
 /* Overlay */
 .popup-overlay {
@@ -518,4 +521,46 @@ html {
 img[src*="packages/1.png"]:hover {
   transform: scale(1.1) rotate(5deg);
   filter: drop-shadow(0 5px 15px rgba(0, 240, 255, 0.6));
+}
+
+/* location flotting button */
+
+/* Floating Direction Button */
+.floating-direction-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.5), 0 0 30px rgba(0, 240, 255, 0.3);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  animation: floatPulse 2s ease-in-out infinite;
+  text-decoration: none;
+}
+
+.floating-direction-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 30px rgba(0, 240, 255, 0.7), 0 0 50px rgba(0, 240, 255, 0.5);
+}
+
+.floating-direction-btn i {
+  animation: playPulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive adjustments for direction button */
+@media (max-width: 768px) {
+  .floating-direction-btn {
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
 }
