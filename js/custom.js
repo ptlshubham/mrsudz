@@ -262,6 +262,70 @@
             });
         }
 
+        // Smooth scroll fallback: for browsers without CSS 'scroll-behavior' support.
+        document.addEventListener('click', function (e) {
+            const anchor = e.target.closest && e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#' || href === '#!') return;
+            const id = href.substring(1);
+            const targetEl = document.getElementById(id) || document.querySelector("[name='" + id + "']");
+            if (!targetEl) return;
+            // If CSS smooth scroll is supported, default behavior is fine.
+            // But we'll prevent default and use JS smooth scroll for consistent fallback.
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Update hash without causing immediate jump
+            history.replaceState(null, null, '#' + id);
+        });
+
+        // Ensure watch videos play; some browsers block autoplay - attempt programmatic play
+        const watchVideo = document.getElementById('watch-video-iframe');
+        if (watchVideo) {
+            const tryPlay = () => {
+                if (watchVideo.paused) {
+                    const p = watchVideo.play();
+                    if (p && typeof p.then === 'function') {
+                        p.then(() => {
+                            // Autoplay succeeded: ensure overlay is hidden
+                            const overlay = document.getElementById('watch-video-overlay');
+                            if (overlay) overlay.style.display = 'none';
+                        }).catch(() => {
+                            // If autoplay blocked: show overlay and attach user interaction
+                            const overlay = document.getElementById('watch-video-overlay');
+                            if (overlay) overlay.style.display = 'flex';
+                            const resumeOnInteraction = () => {
+                                watchVideo.play().catch(() => { });
+                                if (overlay) overlay.style.display = 'none';
+                                document.removeEventListener('click', resumeOnInteraction);
+                                document.removeEventListener('touchstart', resumeOnInteraction);
+                            };
+                            document.addEventListener('click', resumeOnInteraction);
+                            document.addEventListener('touchstart', resumeOnInteraction);
+                        });
+                    }
+                }
+            };
+            // Try after short delay (allow page to settle)
+            setTimeout(tryPlay, 100);
+            // If overlay play button clicked: start playback
+            const overlayBtn = document.getElementById('watch-overlay-play');
+            if (overlayBtn) {
+                overlayBtn.addEventListener('click', function (e) { e.stopPropagation(); watchVideo.play().catch(() => { }); const overlay = document.getElementById('watch-video-overlay'); if (overlay) overlay.style.display = 'none'; });
+            }
+        }
+        // Try to autoplay the contact video as well
+        const contactVideo = document.getElementById('contact-feature-video');
+        if (contactVideo) {
+            setTimeout(() => {
+                contactVideo.play().catch(() => {
+                    const resume = () => { contactVideo.play().catch(() => { }); document.removeEventListener('click', resume); document.removeEventListener('touchstart', resume); };
+                    document.addEventListener('click', resume);
+                    document.addEventListener('touchstart', resume);
+                });
+            }, 120);
+        }
+
         // Add event listener for Join Wash Club button
         const joinClubBtn = document.getElementById('join-wash-club');
         if (joinClubBtn) {

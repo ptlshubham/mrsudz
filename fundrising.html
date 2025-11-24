@@ -32,7 +32,7 @@
 
 <body>
     <div id="wrapper">
-        <a href="#watch-videos" class="floating-video-btn" title="Watch Videos">
+        <a href="index.html#watch-videos" class="floating-video-btn" title="Watch Videos">
             <i class="icofont-play-alt-1"></i>
         </a>
         <!-- header begin -->
@@ -66,9 +66,9 @@
                                 <div class="menu_side_area">
                                     <a id="join-wash-club"
                                         href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection"
-                                        target="_blank" class="btn-line "
+                                        target="_blank" class="btn btn-line glow-shadow"
                                         onclick="event.stopImmediatePropagation(); window.open(this.href, '_blank'); return false;"
-                                        style="box-shadow: 0 0 20px #00f0ff; background-color: #012259;">
+                                        style="background-color: #012259;">
                                         Join Wash Club
                                     </a>
                                     <span id="menu-btn"></span>
@@ -105,7 +105,7 @@
                                         completely hands-off—so you can raise money without sacrificing time with your
                                         team, family, or community.</p>
                                     <div class="spacer-20"></div>
-                                    <a class="btn-main text-dark" href="#fundraising-contact">Apply Now</a>
+                                    <a class="btn btn-main text-dark" href="#fundraising-contact">Apply Now</a>
                                 </div>
                             </div>
 
@@ -177,21 +177,7 @@
                     text-align: center;
                 }
 
-                /* Button style */
-                .btn-view {
-                    background: #00f0ff;
-                    color: #fff;
-                    padding: 12px 24px;
-                    font-size: 18px;
-                    font-weight: bold;
-                    border-radius: 8px;
-                    text-decoration: none;
-                    transition: 0.3s ease;
-                }
-
-                /* .btn-view:hover {
-                    background: #e55a00;
-                } */
+                /* Button now uses Bootstrap's `btn` class; glow-shadow helper provides the original special effect */
 
                 /* Enhanced Glow Effects for Package Images */
                 .glow-effect-basic {
@@ -950,7 +936,7 @@
                                     data-sitekey="6LcYUO0rAAAAAMFfzaKtwgYzRSlzosHnT95ZJXoT"></div>
                                 <div id="submit" class="mt20">
                                     <input type="submit" id="send_message" value="Send Message"
-                                        class="btn-main text-dark rounded-0">
+                                        class="btn btn-main text-dark rounded-0">
                                 </div>
 
                                 <div id="fundraising_success" class="success" style="display:none;">
@@ -964,7 +950,7 @@
                     </div>
                 </div>
                 <div class="container mt-3">
-                    <h2 class="text-center text-color mb-4">Car Wash Location</h2>
+                    <h2 class="text-center text-color mb-4">Your Car Deserves the Best – Here’s Our Location</h2>
                     <div class="map-container">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.5256265046905!2d-83.14851019999999!3d39.9519994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883891bc61390bbf%3A0xd356d4d9eac24f09!2sMr.%20Sudz%20Touchless%20Car%20Wash!5e0!3m2!1sen!2sus!4v1763197967486!5m2!1sen!2sus"

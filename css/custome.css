@@ -10,6 +10,35 @@
   --popup-radius: 14px;
 }
 
+/* Enable modern smooth scrolling for all anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Helper for a focused glowing shadow used on a few buttons */
+.glow-shadow {
+  box-shadow: 0 0 20px rgba(var(--primary-color-rgb), 0.6) !important;
+}
+
+/* Video overlay for play button when autoplay blocked */
+.video-cta-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none; /* default no pointer-events until visible */
+}
+.video-cta-overlay .btn {
+  pointer-events: auto;
+  border-radius: 50%;
+  padding: 18px 22px;
+  font-size: 20px;
+  opacity: 0.95;
+}
+.video-cta-overlay .btn:focus { outline: none; box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.4); }
+
 /* Overlay */
 .popup-overlay {
   position: fixed;
