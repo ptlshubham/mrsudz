@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHYEN8B7H8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FHYEN8B7H8');
+    </script>
     <title>Mr. Sudz Car Wash – Best Touchless Car Wash in Columbus OH</title>
     <link rel="icon" href="images/mr-sudz/logo/favicon-16x16.png" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -110,9 +119,9 @@
                 <img src="/images/mr-sudz/hero/430x932.jpg" alt="Car Wash Mobile" class="jarallax-img mobile-img">
 
                 <div class="hero-content">
-                    <a class="btn-view mb-3 btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
+                    <a class="btn-view btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
                         href="#wash-packages" style="box-shadow: 0 0 20px #00f0ff;">
-                        view wash packages
+                        View wash packages
 
                     </a>
                     <!-- <a href="#packages" class="btn-view">View Package</a> -->
@@ -172,6 +181,14 @@
                     border-radius: 8px;
                     text-decoration: none;
                     transition: 0.3s ease;
+                    white-space: nowrap;
+                }
+
+                @media (max-width: 430px) {
+                    .btn-view {
+                        font-size: 11px;
+                        padding: 8px 14px;
+                    }
                 }
 
                 /* .btn-view:hover {
@@ -525,7 +542,7 @@
                                 the top touchless wash in Columbus.
 
                             </h2>
-                            <p class="text-white fw-bold">See what makes us the top touchless wash in Columbus.
+                            <p class="text-white fw-bold">Experience care that goes beyond
                             </p>
                         </div>
                     </div>
