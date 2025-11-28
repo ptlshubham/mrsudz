@@ -87,19 +87,19 @@
                     <p class="popup-text">
                         <strong>Starting at just $25/month</strong>
                     </p>
-                    <div class="d-flex justify-center gap-3 ">
-              <a href="https://mywashmembership.app.link/kexLEqgqrLb/?customer_id=eb90708c-b71f-418a-8146-c161836042b2" 
-   id="popup-cta" target="_blank" 
+                    <div class="d-flex justify-center gap-3" style="flex-wrap: wrap; margin-top: 20px; padding-bottom: 15px;">
+              <a href="https://apps.apple.com/us/app/my-wash-membership/id1665769284" 
+   id="popup-app-store" target="_blank" 
    onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-   <img src="/images/mr-sudz/buttons/Apple_App_Button2x-9460183.webp" alt="Join Now" style="height:50px;">
+   <img src="/images/mr-sudz/buttons/Apple_App_Button2x-9460183.webp" alt="Download on App Store" style="height:50px; width: auto;">
 </a>
 
-<a href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection" 
-   id="popup-cta" target="_blank" 
+<a href="https://play.google.com/store/apps/details?id=com.dencar.universal.production" 
+   id="popup-google-play" target="_blank" 
    onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-   <img src="/images/mr-sudz/buttons/Google_App_Button2x-9460183.webp" alt="Join Now" style="height:50px;">
+   <img src="/images/mr-sudz/buttons/Google_App_Button2x-9460183.webp" alt="Get it on Google Play" style="height:50px; width: auto;">
 </a>
 
                        </div>
@@ -163,7 +163,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection" 
+                    <a href="https://play.google.com/store/apps/details?id=com.dencar.universal.production" 
                        id="popup-cta" 
                        target="_blank" 
                        class="popup-btn">
@@ -228,7 +228,7 @@
                 e.preventDefault();
                 closePopup();
                 window.open(
-                    "https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection",
+                    "https://play.google.com/store/apps/details?id=com.dencar.universal.production",
                     "_blank"
                 );
             });
@@ -256,7 +256,7 @@
                 e.preventDefault();
                 closePopup();
                 window.open(
-                    "https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection",
+                    "https://play.google.com/store/apps/details?id=com.dencar.universal.production",
                     "_blank"
                 );
             });
@@ -333,6 +333,27 @@
                 e.stopPropagation();
                 // open the link in a new tab (use href so the link stays DRY)
                 window.open(joinClubBtn.href, '_blank');
+            });
+        }
+        // Add event listener for Manage Pass button (desktop)
+        const managePassBtn = document.getElementById('manage-pass');
+        if (managePassBtn) {
+            managePassBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                showJoinClubContent();
+                openPopup();
+            });
+        }
+
+        // Add event listener for Manage Pass button (mobile)
+        const managePassBtnMobile = document.getElementById('manage-pass-mobile');
+        if (managePassBtnMobile) {
+            managePassBtnMobile.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                showJoinClubContent();
+                openPopup();
             });
         }
         // Add event listener for Basic Wash button - COMMENTED OUT (now redirects directly via href)

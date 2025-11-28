@@ -67,11 +67,12 @@ html {
 .popup-content {
   position: relative;
   width: min(92vw, 720px);
+  max-height: 90vh;
   padding: 44px 48px;
   border-radius: var(--popup-radius);
   color: #fff;
   text-align: center;
-  overflow: hidden;
+  overflow-y: auto;
   background: var(--popup-card-bg);
 
   /* 👇 glowing border */
@@ -450,18 +451,24 @@ html {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  .popup-content {
+    padding: 32px 24px 40px;
+    max-height: 85vh;
+  }
+
   .popup-body-with-logo {
     flex-direction: column;
     text-align: center;
     gap: 20px;
     min-height: auto;
+    padding-bottom: 20px;
   }
 
   .popup-logo-left {
     width: 100%;
     min-height: auto;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .popup-logo-left img {
@@ -470,23 +477,35 @@ html {
 
   .popup-content-right {
     min-height: auto;
+    padding-bottom: 20px;
   }
 
   .popup-buttons {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
   }
 
   .app-store-btn img {
     width: 120px;
     height: 36px;
   }
+
+  .d-flex.justify-center.gap-3 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
 }
 
 @media (max-width: 480px) {
+  .popup-content {
+    padding: 28px 20px 40px;
+  }
+
   .popup-body-with-logo {
     gap: 15px;
+    padding-bottom: 25px;
   }
 
   .popup-logo-left img {
@@ -500,6 +519,19 @@ html {
 
   .popup-buttons {
     gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .d-flex.justify-center.gap-3 {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  .d-flex.justify-center.gap-3 a img {
+    height: 45px;
+    width: auto;
   }
 }
 .text-color {

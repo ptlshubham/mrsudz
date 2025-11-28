@@ -75,16 +75,30 @@
                                     <li><a class="menu-item" href="index.html#accutrac-360-i">Accutrac® 360-i</a></li>
                                     <li><a class="menu-item" href="fundrising.html">Fundraising</a></li>
                                     <li><a class="menu-item" href="fleet.html">Fleet</a></li>
+
+                                    <!-- Mobile Menu Buttons -->
+                                    <li class="mobile-menu-buttons">
+                                        <a href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection"
+                                            target="_blank" class="button fw-bold"
+                                            onclick="event.stopImmediatePropagation(); window.open(this.href, '_blank'); return false;">
+                                            Join Wash Club
+                                        </a>
+                                        <a href="#" id="manage-pass-mobile" class="button fw-bold">
+                                            Manage Pass
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
                                     <a id="join-wash-club"
                                         href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection"
-                                        target="_blank" class="btn btn-line glow-shadow"
-                                        onclick="event.stopImmediatePropagation(); window.open(this.href, '_blank'); return false;"
-                                        style="background-color: #012259;">
+                                        target="_blank" class="button fw-bold"
+                                        onclick="event.stopImmediatePropagation(); window.open(this.href, '_blank'); return false;">
                                         Join Wash Club
+                                    </a>
+                                    <a id="manage-pass" class="button fw-bold" style="margin-left: 10px;">
+                                        Manage Pass
                                     </a>
                                     <span id="menu-btn"></span>
                                 </div>
@@ -154,6 +168,38 @@
                     .mobile-small {
                         font-size: 1.5rem !important;
                     }
+
+                    /* Hide buttons in desktop header on mobile */
+                    .menu_side_area #join-wash-club,
+                    .menu_side_area #manage-pass {
+                        display: none !important;
+                    }
+
+                    /* Show buttons in mobile menu */
+                    #mainmenu .mobile-menu-buttons {
+                        display: block !important;
+                        padding: 15px 20px;
+                        border-top: 1px solid rgba(0, 240, 255, 0.2);
+                        margin-top: 10px;
+                        text-align: center;
+                    }
+
+                    #mainmenu .mobile-menu-buttons a {
+                        display: inline-block;
+                        width: auto;
+                        margin: 6px 5px;
+                        padding: 8px 16px;
+                        font-size: 12px;
+                        text-align: center;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                    }
+                }
+
+                /* Hide mobile menu buttons on desktop */
+                #mainmenu .mobile-menu-buttons {
+                    display: none;
                 }
 
                 /* Common image styles */
@@ -498,6 +544,104 @@
 
                 .icon-rotate:hover {
                     transform: rotate(360deg) scale(1.2);
+                }
+
+                .button {
+                    position: relative;
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    border: none;
+                    color: #fff;
+                    cursor: pointer;
+                    background-color: #012259;
+                    font-size: 15px;
+                    line-height: 1;
+                    font-family: 'Poppins', sans-serif;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                    transition: all 0.2s ease;
+                }
+
+                .button:active {
+                    transform: scale(0.96);
+                }
+
+                .button:before,
+                .button:after {
+                    position: absolute;
+                    content: "";
+                    width: 150%;
+                    left: 50%;
+                    height: 100%;
+                    transform: translateX(-50%);
+                    z-index: -1000;
+                    background-repeat: no-repeat;
+                }
+
+                .button:hover:before {
+                    top: -70%;
+                    background-image: radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, transparent 20%, #012259 20%, transparent 30%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, transparent 10%, #012259 15%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%);
+                    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+                        10% 10%, 18% 18%;
+                    background-position: 50% 120%;
+                    animation: greentopBubbles 0.6s ease;
+                }
+
+                @keyframes greentopBubbles {
+                    0% {
+                        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+                            40% 90%, 55% 90%, 70% 90%;
+                    }
+
+                    50% {
+                        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+                            50% 50%, 65% 20%, 90% 30%;
+                    }
+
+                    100% {
+                        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+                            50% 40%, 65% 10%, 90% 20%;
+                        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+                    }
+                }
+
+                .button:hover::after {
+                    bottom: -70%;
+                    background-image: radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, transparent 10%, #012259 15%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%),
+                        radial-gradient(circle, #012259 20%, transparent 20%);
+                    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+                    background-position: 50% 0%;
+                    animation: greenbottomBubbles 0.6s ease;
+                }
+
+                @keyframes greenbottomBubbles {
+                    0% {
+                        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+                            70% -10%, 70% 0%;
+                    }
+
+                    50% {
+                        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+                            105% 0%;
+                    }
+
+                    100% {
+                        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+                            110% 10%;
+                        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+                    }
                 }
             </style>
             <section class="jarallax text-light pt30 pb30">
