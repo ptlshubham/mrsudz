@@ -3,22 +3,22 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHYEN8B7H8"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17658200763"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', 'G-FHYEN8B7H8');
+        gtag('config', 'AW-17658200763');
     </script>
     <title>Mr. Sudz Car Wash – Best Touchless Car Wash in Columbus OH</title>
     <link rel="icon" href="images/mr-sudz/logo/favicon-16x16.png" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description"
-        content="Find the most advanced or the safest touchless car wash Columbus, OH has to offer at Mr. Sudz Car Wash. You will receive a clean finish, 24/7, and high-end wash packages that safeguard the shine of your car.">
+        content="Find the most advanced or the safest touchless car wash Columbus, OH has to offer at Mr. Sudz Car Wash. You will receive a clean finish, 24/7, and high-end wash packages that safeguard the shine of your car.">
     <meta name="keywords"
-        content="Mr Sudz, Touchless Car Wash Columbus, Car Wash Columbus Ohio, Automatic Car Wash, Eco-Friendly Car Wash, Scratch-Free Car Wash, Premium Car Wash Services, Car Cleaning Columbus, Vehicle Shine, Car Care Columbus Ohio">
+        content="touchless car wash in columbus, car wash packages in columbus OH, automatic car wash in columbus ohio, best touchless car wash near me in columbus ohio, 24/7 automatic car wash in West Broad Street">
     <meta name="author" content="Mr Sudz Car Wash - 5560 W Broad St, Columbus, Ohio 43228">
     <meta property="og:image" content="images/mr-sudz/logo/apple-touch-icon.png">
     <meta property="og:url" content="images/mr-sudz/logo/apple-touch-icon.png">
@@ -71,9 +71,12 @@
                                 <!-- logo begin -->
                                 <div id="logo">
                                     <a href="index.html">
-                                        <img class="logo-main" src="images/mr-sudz/logo/logo.png" height="100" alt="">
-                                        <img class="logo-scroll" src="images/mr-sudz/logo/logo.png" height="80" alt="">
-                                        <img class="logo-mobile" src="images/mr-sudz/logo/logo.png" height="60" alt="">
+                                        <img class="logo-main" src="images/mr-sudz/logo/logo.png" height="100"
+                                            alt="touchless car wash in columbus">
+                                        <img class="logo-scroll" src="images/mr-sudz/logo/logo.png" height="80"
+                                            alt="car wash packages in columbus OH">
+                                        <img class="logo-mobile" src="images/mr-sudz/logo/logo.png" height="60"
+                                            alt="automatic car wash in columbus ohio">
                                     </a>
                                 </div>
                                 <!-- logo close -->
@@ -94,13 +97,14 @@
                                             onclick="event.stopImmediatePropagation(); window.open(this.href, '_blank'); return false;">
                                             Join Wash Club
                                         </a>
-                                        <a href="#" id="manage-pass-mobile" class="button fw-bold">
-                                            Manage Pass
+                                        <a href="#" id="manage-pass-mobile" class="button fw-bold"
+                                            style="box-shadow: 0 0 20px #00f0ff">
+                                            Manage Wash Pass
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="de-flex-col">
+                            <div class=" de-flex-col">
                                 <div class="menu_side_area">
                                     <a id="join-wash-club"
                                         href="https://mywashmembership.com/#/customer/eb90708c-b71f-418a-8146-c161836042b2/passes/pass-selection"
@@ -109,7 +113,7 @@
                                         Join Wash Club
                                     </a>
                                     <a id="manage-pass" class="button fw-bold" style="margin-left: 10px;">
-                                        Manage Pass
+                                        Manage Wash Pass
                                     </a>
                                     <span id="menu-btn"></span>
                                 </div>
@@ -126,19 +130,25 @@
             <div id="top"></div>
 
             <section class="jarallax" style="height:100vh; position:relative; overflow:hidden;">
-                <!-- Desktop Image -->
-                <img src="/images/mr-sudz/hero/car-wash-backdrop-banner.jpg" alt="Car Wash Desktop"
-                    class="jarallax-img desktop-img">
+                <!-- Desktop Background Video -->
+                <video autoplay muted loop playsinline preload="auto" class="jarallax-img desktop-img"
+                    poster="/images/mr-sudz/hero/car-wash-backdrop-banner.jpg" style="object-fit: cover;">
+                    <source src="/images/mr-sudz/videos/main-video.mp4" type="video/mp4">
+                    <!-- fallback image if video unsupported -->
+                    <img src="/images/mr-sudz/hero/car-wash-backdrop-banner.jpg" alt="Car Wash Desktop">
+                </video>
 
                 <!-- Mobile Image -->
                 <img src="/images/mr-sudz/hero/430x932.jpg" alt="Car Wash Mobile" class="jarallax-img mobile-img">
 
                 <div class="hero-content">
-                    <a class="btn-view btn-main text-dark mt-lg-4 animate__animated animate__pulse animate__infinite"
-                        href="#wash-packages" style="box-shadow: 0 0 20px #00f0ff;">
+                    <h1 class="hero-title text-color">Fast, Touchless & Always Open – Best 24/7 Car Wash in Columbus,
+                        OH </h1>
+                    <!-- <a id="view-wash-packages"
+                        class="button fw-bold mt-lg-4 animate__animated animate__pulse animate__infinite"
+                        href="#wash-packages" role="button" aria-label="View wash packages">
                         View wash packages
-
-                    </a>
+                    </a> -->
                     <!-- <a href="#packages" class="btn-view">View Package</a> -->
                 </div>
             </section>
@@ -149,13 +159,24 @@
                         font-size: 1.5rem !important;
                     }
 
-                    /* Hide buttons in desktop header on mobile */
-                    .menu_side_area #join-wash-club,
-                    .menu_side_area #manage-pass {
+                    /* Hide desktop-specific Join Wash Club on mobile, but show the Manage Pass button next to the menu button */
+                    .menu_side_area #join-wash-club {
                         display: none !important;
                     }
 
-                    /* Show buttons in mobile menu */
+                    /* Show the existing desktop `manage-pass` anchor next to the menu button on mobile */
+                    .menu_side_area {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+
+                    .menu_side_area #manage-pass {
+                        display: inline-block !important;
+                        margin-left: 10px !important;
+                    }
+
+                    /* Show buttons in mobile menu (but hide manage-pass which will display next to menu) */
                     #mainmenu .mobile-menu-buttons {
                         display: block !important;
                         padding: 15px 20px;
@@ -174,6 +195,11 @@
                         border-radius: 5px;
                         text-decoration: none;
                         transition: all 0.3s ease;
+                    }
+
+                    /* Hide the manage-pass entry inside the mobile menu -- we'll show the desktop manage-pass anchor beside the menu icon instead */
+                    #mainmenu .mobile-menu-buttons a#manage-pass-mobile {
+                        display: none !important;
                     }
                 }
 
@@ -200,22 +226,65 @@
 
                 /* On smaller screens, hide desktop image and show mobile */
                 @media (max-width: 768px) {
+
+                    /* Show desktop video on mobile devices; hide the small mobile image
+                       This makes the hero use the same video on both desktop and mobile */
                     .desktop-img {
-                        display: none;
+                        display: block !important;
                     }
 
                     .mobile-img {
-                        display: block;
+                        display: none !important;
                     }
                 }
 
                 /* Center the content */
                 .hero-content {
                     position: absolute;
-                    top: 50%;
+                    bottom: 10%;
                     left: 50%;
-                    transform: translate(-50%, -50%);
+                    transform: translateX(-50%);
                     text-align: center;
+                    z-index: 2;
+                    /* ensure the CTA is on top of overlays */
+                }
+
+                /* Optional: use `hero-content-left` on small promos to align left */
+                .hero-content-left {
+                    left: 6%;
+                    right: auto;
+                    transform: none;
+                    text-align: left;
+                }
+
+                .hero-title {
+                    font-size: 48px;
+                    font-weight: 700;
+                    margin: 0 0 12px;
+                    text-align: center;
+                    text-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
+                }
+
+                @media (max-width: 768px) {
+                    .hero-title {
+                        font-size: 28px;
+                        display: none !important;
+                        /* hide H1 on mobile */
+                    }
+
+                    .hero-content {
+                        /* keep near bottom on desktop, but slightly higher on small screens */
+                        bottom: 8%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 0 10px;
+                    }
+
+                    .hero-content-left {
+                        left: 50%;
+                        transform: translateX(-50%);
+                        text-align: center;
+                    }
                 }
 
                 /* Button style */
@@ -229,6 +298,30 @@
                     text-decoration: none;
                     transition: 0.3s ease;
                     white-space: nowrap;
+                }
+
+                /* Larger hero CTA that matches the Join Wash Club button */
+                .hero-content .button {
+                    display: inline-block;
+                    padding: 12px 28px !important;
+                    /* slightly larger for hero */
+                    font-size: 16px !important;
+                    border-radius: 22px !important;
+                    box-shadow: 0 10px 30px rgba(1, 34, 89, 0.28) !important;
+                    background-color: #012259 !important;
+                    /* ensure primary color */
+                    color: #fff !important;
+                    z-index: 3;
+                    /* above other overlapping elements */
+                    text-transform: none;
+                }
+
+                /* Hero button on very small screens */
+                @media (max-width: 430px) {
+                    .hero-content .button {
+                        padding: 10px 16px !important;
+                        font-size: 14px !important;
+                    }
                 }
 
                 @media (max-width: 430px) {
@@ -441,14 +534,15 @@
                         <div class="col-lg-12">
                             <img src="images/mr-sudz/banner/offer.jpg"
                                 class="img-fluid rounded-20px position-relative z-index-1 wow fadeInRight"
-                                style="box-shadow: 0 0 20px #00f0ff;" alt="">
+                                style="box-shadow: 0 0 20px #00f0ff;" alt="best touchless car wash near me in columbus ohio">
                         </div>
                     </div>
                 </div>
             </section> -->
 
             <section class="jarallax" id="wash-packages">
-                <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img" alt="">
+                <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img"
+                    alt="24/7 automatic car wash in West Broad Street">
                 <div class="container">
                     <div class="row g-4">
                         <div class="col-lg-12 text-center">
@@ -681,7 +775,7 @@
 
             <section class="text-dark jarallax" id="gallery-showcase">
                 <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img brightness-25"
-                    style="filter: brightness(0.5)" alt="">
+                    style="filter: brightness(0.5)" alt="touchless car wash in columbus">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
@@ -1094,7 +1188,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/1.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="car wash packages in columbus OH">
                                     </div>
                                 </a>
 
@@ -1105,7 +1199,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/2.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="automatic car wash in columbus ohio">
                                     </div>
                                 </a>
 
@@ -1116,7 +1210,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/3.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="best touchless car wash near me in columbus ohio">
                                     </div>
                                 </a>
 
@@ -1127,7 +1221,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/4.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="24/7 automatic car wash in West Broad Street">
                                     </div>
                                 </a>
 
@@ -1138,7 +1232,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/5.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="touchless car wash in columbus">
                                     </div>
                                 </a>
 
@@ -1149,7 +1243,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/6.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="car wash packages in columbus OH">
                                     </div>
                                 </a>
 
@@ -1160,7 +1254,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/7.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="automatic car wash in columbus ohio">
                                     </div>
                                 </a>
 
@@ -1171,7 +1265,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="images/mr-sudz/gallery/8.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="">
+                                            alt="best touchless car wash near me in columbus ohio">
                                     </div>
                                 </a>
                             </div>
@@ -1283,13 +1377,13 @@
                 </div>
             </section>
             <!-- <section class="jarallax">
-                <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img" alt="">
+                <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img" alt="24/7 automatic car wash in West Broad Street">
                 <div class="container">
                     <div class="row g-4 gx-5">
                         <div class="col-lg-4">
                             <div class="subtitle bg-color text-dark wow fadeInUp mb-3">Mr. Sudz Wash Club</div>
                             <h2 class="text-color">Wash Your Car Any Day, Every Day</h2> <img
-                                src="images/mr-sudz/misc/17.webp" class="img-fluid" alt="">
+                                src="images/mr-sudz/misc/17.webp" class="img-fluid" alt="touchless car wash in columbus">
                         </div>
 
                         <div class="col-lg-8">
@@ -1321,7 +1415,7 @@
             <!-- BOTTOM SECTION: Membership Has Its Clean Advantages -->
             <section class="jarallax" id="membership-advantages">
                 <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img"
-                    style="filter: brightness(0.5);" alt="">
+                    style="filter: brightness(0.5);" alt="car wash packages in columbus OH">
                 <!-- <img src="images/mr-sudz/slider/background-plain.jpg" class="jarallax-img" alt="Why Join Mr Sudz Club"> -->
 
                 <div class="container">
@@ -1403,7 +1497,7 @@
 
 
             <!-- <section class="jarallax">
-                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img" alt="">
+                <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img" alt="automatic car wash in columbus ohio">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-8">
@@ -1683,7 +1777,8 @@
                             <div class="img-with-cap mb20">
                                 <div class="d-title text-dark  fw-bold">Open Daily</div>
                                 <div class="d-overlay"></div>
-                                <img src="images/mr-sudz/gallery/2.jpg" class="img-fullwidth rounded-1" alt="">
+                                <img src="images/mr-sudz/gallery/2.jpg" class="img-fullwidth rounded-1"
+                                    alt="best touchless car wash near me in columbus ohio">
                             </div>
                         </div>
                         <!-- Contact Form Column -->

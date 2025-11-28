@@ -596,3 +596,37 @@ img[src*="packages/1.png"]:hover {
     font-size: 20px;
   }
 }
+
+/* ------------------------------------------------------------------
+   Header: Manage Pass shadow styling
+   ------------------------------------------------------------------ */
+/* Apply a subtle elevation shadow to the header and mobile manage-pass buttons.
+   This rule specifically targets the header anchor within `.menu_side_area` so it
+   doesn't affect popup buttons or other elements. */
+.menu_side_area #manage-pass,
+.menu_side_area #join-wash-club,
+#manage-pass-mobile {
+  /* cyan glow shadow requested by user */
+  box-shadow: 0 0 20px #00f0ff;
+  border-radius: 16px;
+  transition: transform 0.16s ease, box-shadow 0.18s ease;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+.menu_side_area #manage-pass:focus,
+.menu_side_area #manage-pass:hover,
+.menu_side_area #join-wash-club:focus,
+.menu_side_area #join-wash-club:hover,
+#manage-pass-mobile:focus,
+#manage-pass-mobile:hover {
+  transform: translateY(-3px);
+  /* increase intensity for hover/focus */
+  box-shadow: 0 0 30px #00f0ff;
+}
+
+/* Keep layout intact on small screens where desktop manage-pass remains beside menu icon */
+.menu_side_area #manage-pass {
+  display: inline-block !important;
+  margin-left: 10px !important;
+}

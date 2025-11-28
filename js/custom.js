@@ -60,52 +60,57 @@
         const popupContent = document.querySelector('.popup-content');
         if (!popupContent) return;
 
+        // Inject a Uiverse-like card with a CTA and two store buttons inside it
         popupContent.innerHTML = `
-            <button id="popup-close" class="popup-close" aria-label="Close popup">&times;</button>
+    <button id="popup-close" class="popup-close" aria-label="Close popup">&times;</button>
+    
+    <div class="popup-body-with-logo">
+        <div class="popup-logo-left">
+            <img src="images/mr-sudz/logo/yeti.png" alt="Mr Sudz Logo" height="300" />
+        </div>
+        
+        <div class="popup-content-right">
+            <h2 id="popup-title" class="popup-title text-white">Welcome to the Wash Club!</h2>
             
-            <div class="popup-body-with-logo">
-                <div class="popup-logo-left">
-                    <img src="images/mr-sudz/logo/yeti.png" alt="Mr Sudz Logo" height="300" />
-                </div>
-                
-                <div class="popup-content-right">
-                    <h2 id="popup-title" class="popup-title text-white">Join the Wash Club!</h2>
-                    
-                    <p class="popup-text">
-                        Get unlimited washes and exclusive member benefits at Mr Sudz!
-                    </p>
-                    
-                    <div class="popup-benefits">
-                        <ul class="benefits-list">
-                            <li>✓ Up to 15 washes per month</li>
-                            <li>✓ No contracts - cancel anytime</li>
-                            <li>✓ Free vacuums included</li>
-                            <li>✓ Multi-vehicle savings</li>
-                        </ul>
-                    </div>
-                    
-                    <p class="popup-text">
-                        <strong>Starting at just $25/month</strong>
-                    </p>
-                    <div class="d-flex justify-center gap-3" style="flex-wrap: wrap; margin-top: 20px; padding-bottom: 15px;">
-              <a href="https://apps.apple.com/us/app/my-wash-membership/id1665769284" 
-   id="popup-app-store" target="_blank" 
-   onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
-   onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-   <img src="/images/mr-sudz/buttons/Apple_App_Button2x-9460183.webp" alt="Download on App Store" style="height:50px; width: auto;">
-</a>
-
-<a href="https://play.google.com/store/apps/details?id=com.dencar.universal.production" 
-   id="popup-google-play" target="_blank" 
-   onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
-   onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-   <img src="/images/mr-sudz/buttons/Google_App_Button2x-9460183.webp" alt="Get it on Google Play" style="height:50px; width: auto;">
-</a>
-
-                       </div>
-                </div>
+            <p class="popup-text">
+                Thanks for joining the Mr Sudz family! Your wash package is now active and ready to use.
+                Download the app to unlock your membership, access your washes, and enjoy your benefits right away.
+            </p>
+            
+            <div class="popup-benefits">
+                <ul class="benefits-list">
+                    <li>✓ Unlock your wash passes instantly</li>
+                    <li>✓ Track your remaining washes</li>
+                    <li>✓ Access exclusive member perks</li>
+                    <li>✓ Faster check-in at all locations</li>
+                </ul>
             </div>
-        `;
+
+            <p class="popup-text">
+                Get started by downloading the app below.
+            </p>
+
+            <div class="d-flex justify-center gap-3" style="flex-wrap: wrap; margin-top: 20px; padding-bottom: 15px;">
+                
+                <a href="https://apps.apple.com/us/app/my-wash-membership/id1665769284" 
+                    id="popup-app-store" target="_blank"
+                    onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                    <img src="/images/mr-sudz/buttons/Apple_App_Button2x-9460183.webp" alt="Download on App Store" style="height:50px; width: auto;">
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=com.dencar.universal.production" 
+                    id="popup-google-play" target="_blank"
+                    onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                    <img src="/images/mr-sudz/buttons/Google_App_Button2x-9460183.webp" alt="Get it on Google Play" style="height:50px; width: auto;">
+                </a>
+
+            </div>
+        </div>
+    </div>
+`;
+
 
         // Re-attach close button event listener
         const newCloseBtn = document.getElementById('popup-close');
@@ -113,12 +118,21 @@
             newCloseBtn.addEventListener('click', closePopup);
         }
 
+        // Get the Join/Get Started CTA inside the card
+        const cardCta = document.getElementById('join-club-get-started');
+        if (cardCta) {
+            cardCta.addEventListener('click', (e) => {
+                // Let the smooth scroll handler handle anchors; close popup first
+                closePopup();
+            });
+        }
+
         // Re-attach App Store button event listener
         const appStoreBtn = document.getElementById('popup-app-store');
         if (appStoreBtn) {
             appStoreBtn.addEventListener('click', (e) => {
                 closePopup();
-                // Link opens in new tab automatically due to target="_blank"
+                // Let target="_blank" open the link in a new tab
             });
         }
 
@@ -127,7 +141,7 @@
         if (googlePlayBtn) {
             googlePlayBtn.addEventListener('click', (e) => {
                 closePopup();
-                // Link opens in new tab automatically due to target="_blank"
+                // Let target="_blank" open the link in a new tab
             });
         }
     }
