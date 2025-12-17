@@ -79,10 +79,10 @@
             
             <div class="popup-benefits">
                 <ul class="benefits-list">
-                    <li>✓ Unlock your wash passes instantly</li>
-                    <li>✓ Track your remaining washes</li>
-                    <li>✓ Access exclusive member perks</li>
-                    <li>✓ Faster check-in at all locations</li>
+                    <li>✓ Up to 15 washes per month, per membership</li>
+                    <li>✓ One membership is valid for one vehicle only</li>
+                    <li>✓ Memberships are tied to a single license plate</li>
+                    <li>✓ Sharing or transferring memberships is not permitted</li>
                 </ul>
             </div>
 
