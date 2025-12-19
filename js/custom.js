@@ -3,6 +3,9 @@
     const CLOSE_ID = 'popup-close';
     const CTA_ID = 'popup-cta';
     const SHOW_DELAY_MS = 600;
+    // When true, the Join Club popup will be shown automatically when the page finishes loading.
+    // Toggle to `false` to disable auto-opening on load.
+    const AUTO_OPEN_ON_LOAD = true;
     const BASIC_WASH_BTN_ID = 'btn-basic-wash'; // ID for the Basic Wash button
 
     // Ensure the overlay exists in DOM; create it if missing (now that HTML is commented out)
@@ -146,6 +149,78 @@
         }
     }
 
+    // Function to show a simple Welcome popup (auto-open on page load)
+    function showWelcomeContent() {
+        const popupContent = document.querySelector('.popup-content');
+        if (!popupContent) return;
+
+        popupContent.innerHTML = `
+    <button id="popup-close" class="popup-close" aria-label="Close popup">&times;</button>
+    
+    <div class="popup-body-with-logo">
+        <div class="popup-logo-left">
+            <img src="images/mr-sudz/logo/yeti.png" alt="Mr Sudz Logo" height="300" />
+        </div>
+        
+        <div class="popup-content-right">
+            <h2 id="popup-title" class="popup-title text-white">Welcome to the Wash Club!</h2>
+            
+            <p class="popup-text">
+              Looking for a cleaner, shinier car without the hassle? You’re in the right place. Browse our wash packages and get started whenever you’re ready.
+            </p>
+            
+            <div class="popup-benefits">
+                <ul class="benefits-list">
+                    <li>✓ Up to 15 washes per month, per membership.</li>
+                    <li>✓ One membership is valid for one vehicle only.</li>
+                    <li>✓ Memberships are tied to a single license plate.</li>
+                    <li>✓ Sharing or transferring memberships is not permitted.</li>
+                </ul>
+            </div>
+
+            <p class="popup-text">
+                Get started by downloading the app below.
+            </p>
+
+            <div class="d-flex justify-center gap-3" style="flex-wrap: wrap; margin-top: 20px; padding-bottom: 15px;">
+                
+                <a href="https://apps.apple.com/us/app/my-wash-membership/id1665769284" 
+                    id="popup-app-store" target="_blank"
+                    onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                    <img src="/images/mr-sudz/buttons/Apple_App_Button2x-9460183.webp" alt="Download on App Store" style="height:50px; width: auto;">
+                </a>
+
+                <a href="https://play.google.com/store/apps/details?id=com.dencar.universal.production" 
+                    id="popup-google-play" target="_blank"
+                    onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 0.3s ease'; this.style.boxShadow='0 0 20px #00f0ff';" 
+                    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                    <img src="/images/mr-sudz/buttons/Google_App_Button2x-9460183.webp" alt="Get it on Google Play" style="height:50px; width: auto;">
+                </a>
+
+            </div>
+        </div>
+    </div>
+`;
+
+        // Re-attach close button event listener
+        const newCloseBtn = document.getElementById('popup-close');
+        if (newCloseBtn) {
+            newCloseBtn.addEventListener('click', closePopup);
+        }
+
+        // Close popup when store buttons clicked
+        const appStoreBtn = document.getElementById('popup-app-store');
+        if (appStoreBtn) {
+            appStoreBtn.addEventListener('click', (e) => { closePopup(); });
+        }
+
+        const googlePlayBtnLocal = document.getElementById('popup-google-play');
+        if (googlePlayBtnLocal) {
+            googlePlayBtnLocal.addEventListener('click', (e) => { closePopup(); });
+        }
+    }
+
     // Function to show Basic Wash content
     function showBasicWashContent() {
         const popupContent = document.querySelector('.popup-content');
@@ -250,10 +325,21 @@
     }
 
     window.addEventListener('load', () => {
-        // Disable auto-open on load
-        // setTimeout(openPopup, SHOW_DELAY_MS);
-
+        // Ensure overlay exists before manipulating popup content
         const el = overlay();
+
+        // Auto-open popup on load if enabled
+        if (AUTO_OPEN_ON_LOAD) {
+            // Inject Welcome content so the dialog has the right markup
+            showWelcomeContent();
+            // Open after a short delay so page assets can settle
+            setTimeout(() => {
+                openPopup();
+                // Focus the close button for accessibility
+                const closeBtnFocus = document.getElementById('popup-close');
+                if (closeBtnFocus) closeBtnFocus.focus();
+            }, SHOW_DELAY_MS);
+        }
         const closeBtn = document.getElementById(CLOSE_ID);
         const ctaBtn = document.getElementById(CTA_ID);
 
