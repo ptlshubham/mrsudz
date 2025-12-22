@@ -630,3 +630,14 @@ img[src*="packages/1.png"]:hover {
   display: inline-block !important;
   margin-left: 10px !important;
 }
+/* ------------------------------------------------------------------
+   Video scroll fix
+   ------------------------------------------------------------------ */
+/* Allow page scrolling when mouse is over an embedded YouTube iframe.
+   If users need to interact with the video (click controls), the JS will
+   toggle pointer-events so the iframe can receive clicks after a user click. */
+iframe[src*="youtube.com"] {
+  pointer-events: none; /* let wheel events pass to the page */
+}
+
+/* End video scroll fix */

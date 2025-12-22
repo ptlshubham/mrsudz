@@ -489,6 +489,38 @@
             }
         });
         */
+
+        // Fix: allow page scroll while hovering YouTube iframe, enable interaction on click
+        (function enableYouTubeScrollFix() {
+            try {
+                const selectors = 'iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"]';
+                document.querySelectorAll(selectors).forEach((iframe) => {
+                    // Default: allow wheel events to pass to the page
+                    iframe.style.pointerEvents = 'none';
+
+                    // Use the wrapper (parent element) to detect a user click to enable interaction
+                    const wrapper = iframe.parentElement || iframe;
+
+                    // First user click enables iframe interaction (once)
+                    const enableOnce = function () {
+                        iframe.style.pointerEvents = 'auto';
+                        // After enabling once, we don't need to keep this click listener
+                        wrapper.removeEventListener('click', enableOnce);
+                    };
+                    wrapper.addEventListener('click', enableOnce);
+
+                    // When mouse leaves the wrapper, revert to non-interactive (optional UX)
+                    wrapper.addEventListener('mouseleave', function () {
+                        iframe.style.pointerEvents = 'none';
+                        // Re-attach enableOnce so next click re-enables
+                        wrapper.addEventListener('click', enableOnce);
+                    });
+                });
+            } catch (err) {
+                // Fail silently if DOM not fully ready or selector unsupported
+                console.warn('YouTube scroll fix failed:', err);
+            }
+        })();
     });
 
 })();
