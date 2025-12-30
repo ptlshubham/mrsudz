@@ -25,16 +25,35 @@
     <meta property="og:url" content="images/mr-sudz/logo/apple-touch-icon.png">
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="images/mr-sudz/logo/apple-touch-icon.png">
-    <!-- CSS Files
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="dns-prefetch" href="https://mywashmembership.com">
+
+    <!-- CSS Files - Critical CSS loaded first, others deferred
     ================================================== -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
-
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="css/plugins.css" rel="stylesheet" type="text/css">
-    <link href="css/swiper.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/coloring.css" rel="stylesheet" type="text/css">
-    <link href="css/custome.css" rel="stylesheet" type="text/css">
+
+    <!-- Defer non-critical CSS -->
+    <link href="css/plugins.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/plugins.css" rel="stylesheet">
+    </noscript>
+    <link href="css/swiper.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/swiper.css" rel="stylesheet">
+    </noscript>
+    <link href="css/coloring.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/coloring.css" rel="stylesheet">
+    </noscript>
+    <link href="css/custome.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/custome.css" rel="stylesheet">
+    </noscript>
 
 
 </head>
@@ -87,7 +106,7 @@
                                             Join Wash Club
                                         </a>
                                         <a href="#" id="manage-pass-mobile" class="button fw-bold">
-                                            Manage Pass
+                                            Manage Wash Pass
                                         </a>
                                     </li>
                                 </ul>
@@ -112,7 +131,6 @@
             </div>
         </header>
         <!-- header close -->
-        <!-- content begin -->
         <div class="no-bottom no-top" id="content">
 
             <div id="top"></div>
@@ -778,7 +796,7 @@
             </section>
 
             <section class="jarallax text-light pt30 pb30">
-                <img src="images/mr-sudz/slider/slider.jpg" class="jarallax-img" alt="Mr Sudz Touchless Car Wash">
+                <img src="images/mr-sudz/slider/slider.webp" class="jarallax-img" alt="Mr Sudz Touchless Car Wash">
                 <div class="wow fadeInRight d-flex">
                     <div class="de-marquee-list wow text-white">
                         <div class="d-item">
@@ -1176,13 +1194,12 @@
     ================================================== -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <script src="js/custom.js"></script>
-
-    <script src="js/plugins.js"></script>
-    <script src="js/designesia.js"></script>
-    <script src="js/swiper.js"></script>
-    <script src="js/custom-marquee.js"></script>
-    <script src="js/custom-swiper-2.js"></script>
+    <script src="js/plugins.js" defer></script>
+    <script src="js/designesia.js" defer></script>
+    <script src="js/swiper.js" defer></script>
+    <script src="js/custom-marquee.js" defer></script>
+    <script src="js/custom-swiper-2.js" defer></script>
+    <script src="js/custom.js" defer></script>
 
     <!-- be sure this script is on the page and api.js is loaded (see above) -->
     <script>

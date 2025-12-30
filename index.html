@@ -24,16 +24,36 @@
     <meta property="og:url" content="images/mr-sudz/logo/apple-touch-icon.png">
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="images/mr-sudz/logo/apple-touch-icon.png">
-    <!-- CSS Files
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="dns-prefetch" href="https://mywashmembership.com">
+
+
+    <!-- CSS Files - Critical CSS loaded first, others deferred
     ================================================== -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
-
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
-    <link href="css/plugins.css" rel="stylesheet" type="text/css">
-    <link href="css/swiper.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/coloring.css" rel="stylesheet" type="text/css">
-    <link href="css/custome.css" rel="stylesheet" type="text/css">
+
+    <!-- Defer non-critical CSS -->
+    <link href="css/plugins.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/plugins.css" rel="stylesheet">
+    </noscript>
+    <link href="css/swiper.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/swiper.css" rel="stylesheet">
+    </noscript>
+    <link href="css/coloring.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/coloring.css" rel="stylesheet">
+    </noscript>
+    <link href="css/custome.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="css/custome.css" rel="stylesheet">
+    </noscript>
 
     <!-- color scheme -->
 
@@ -130,16 +150,13 @@
             <div id="top"></div>
 
             <section class="jarallax" style="height:100vh; position:relative; overflow:hidden;">
-                <!-- Desktop Background Video -->
-                <video autoplay muted loop playsinline preload="auto" class="jarallax-img desktop-img"
-                    poster="/images/mr-sudz/hero/car-wash-backdrop-banner.jpg" style="object-fit: cover;">
-                    <source src="/images/mr-sudz/videos/main-video.mp4" type="video/mp4">
+                <!-- Desktop Background Video - Lazy loaded with metadata only -->
+                <video autoplay muted loop playsinline preload="metadata" class="jarallax-img desktop-img"
+                    style="object-fit: cover;" loading="lazy">
+                    <source data-src="/images/mr-sudz/videos/main-video.mp4" type="video/mp4">
                     <!-- fallback image if video unsupported -->
-                    <img src="/images/mr-sudz/hero/car-wash-backdrop-banner.jpg" alt="Car Wash Desktop">
                 </video>
 
-                <!-- Mobile Image -->
-                <img src="/images/mr-sudz/hero/430x932.jpg" alt="Car Wash Mobile" class="jarallax-img mobile-img">
 
                 <div class="hero-content">
                     <h1 class="hero-title text-color">Fast, Touchless & Always Open – Best 24/7 Car Wash in Columbus,
@@ -534,7 +551,7 @@
                         <div class="col-lg-12">
                             <img src="images/mr-sudz/banner/offer.jpg"
                                 class="img-fluid rounded-20px position-relative z-index-1 wow fadeInRight"
-                                style="box-shadow: 0 0 20px #00f0ff;" alt="best touchless car wash near me in columbus ohio">
+                                style="box-shadow: 0 0 20px #00f0ff;" alt="best touchless car wash near me in columbus ohio" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -542,7 +559,7 @@
 
             <section class="jarallax" id="wash-packages">
                 <img src="images/mr-sudz/background/1920x1280.jpg" class="jarallax-img"
-                    alt="24/7 automatic car wash in West Broad Street">
+                    alt="24/7 automatic car wash in West Broad Street" loading="lazy">
                 <div class="container">
                     <div class="row g-4">
                         <div class="col-lg-12 text-center">
@@ -612,7 +629,7 @@
                                         <img src="images/mr-sudz/packages/Best.png"
                                             class="w-80 relative z-1000 glow-effect-basic"
                                             style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
-                                            alt="Best Wash">
+                                            alt="Best Wash" loading="lazy">
                                     </div>
 
                                     <!-- Highlighted Section -->
@@ -655,7 +672,7 @@
                                         <img src="images/mr-sudz/packages/Batter.png"
                                             class="w-80 relative z-1000 glow-effect-basic"
                                             style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
-                                            alt="Better Wash">
+                                            alt="Better Wash" loading="lazy">
                                         <!-- <img src="images/mr-sudz/packages/Better-wash.gif" class="w-80 relative z-1000"
                                             style="animation: glowPulse 2.5s ease-in-out infinite; transition: all 0.3s ease;"
                                             alt="Better Wash"> -->
@@ -701,7 +718,7 @@
                                         <img src="images/mr-sudz/packages/Basic.png"
                                             class="w-80 relative z-1000 glow-effect-basic"
                                             style="animation: glowPulse 2.5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite; transition: all 0.3s ease;"
-                                            alt="basic Wash">
+                                            alt="basic Wash" loading="lazy">
                                     </div>
 
                                     <!-- Highlighted Section -->
@@ -737,7 +754,8 @@
                 </div>
             </section>
             <section class="jarallax text-light pt30 pb30">
-                <img src="/images/mr-sudz/slider/slider.jpg" class="jarallax-img" alt="Mr Sudz Touchless Car Wash">
+                <img src="/images/mr-sudz/slider/slider.webp" class="jarallax-img" alt="Mr Sudz Touchless Car Wash"
+                    loading="lazy">
                 <div class="wow fadeInRight d-flex">
                     <div class="de-marquee-list wow text-white">
                         <div class="d-item">
@@ -775,7 +793,7 @@
 
             <section class="text-dark jarallax" id="gallery-showcase">
                 <img src="images/mr-sudz/background/background-2.jpg" class="jarallax-img brightness-25"
-                    style="filter: brightness(0.5)" alt="touchless car wash in columbus">
+                    style="filter: brightness(0.5)" alt="touchless car wash in columbus" loading="lazy">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center">
@@ -796,7 +814,7 @@
                                 <div class="icon-wrapper">
                                     <div class="icon-glow-ring"></div>
                                     <img src="images/mr-sudz/background/value.png" alt="Touchless Technology"
-                                        class="feature-icon-pro">
+                                        class="feature-icon-pro" loading="lazy">
                                 </div>
                                 <div class="feature-content">
                                     <h4 class="text-color mb-3">100% Touchless Technology</h4>
@@ -819,7 +837,7 @@
                                 <div class="icon-wrapper">
                                     <div class="icon-glow-ring"></div>
                                     <img src="images/mr-sudz/counters/Car-wash.png" alt="24/7 Open"
-                                        class="feature-icon-pro">
+                                        class="feature-icon-pro" loading="lazy">
                                 </div>
                                 <div class="feature-content">
                                     <h4 class="text-color mb-3">Open 24/7, Always Ready</h4>
@@ -843,7 +861,7 @@
                                 <div class="icon-wrapper">
                                     <div class="icon-glow-ring"></div>
                                     <img src="images/mr-sudz/background/Biodegradable Soaps.png" alt="Fast Wash"
-                                        class="feature-icon-pro">
+                                        class="feature-icon-pro" loading="lazy">
                                 </div>
                                 <div class="feature-content">
                                     <h4 class="text-color mb-3">Complete Wash in Under 3 Minutes</h4>
@@ -867,7 +885,7 @@
                                 <div class="icon-wrapper">
                                     <div class="icon-glow-ring"></div>
                                     <img src="images/mr-sudz/background/MULTI-VEHICLE SAVINGS.png" alt="Large Vehicles"
-                                        class="feature-icon-pro">
+                                        class="feature-icon-pro" loading="lazy">
                                 </div>
                                 <div class="feature-content">
                                     <h4 class="text-color mb-3">Accommodates Large Vehicles</h4>
@@ -891,7 +909,7 @@
                                 <div class="icon-wrapper">
                                     <div class="icon-glow-ring"></div>
                                     <img src="images/mr-sudz/background/family.png" alt="Locally Owned"
-                                        class="feature-icon-pro">
+                                        class="feature-icon-pro" loading="lazy">
                                 </div>
                                 <div class="feature-content">
                                     <h4 class="text-color mb-3">Locally Owned & Operated</h4>
@@ -915,7 +933,7 @@
                                 <div class="icon-wrapper">
                                     <div class="icon-glow-ring"></div>
                                     <img src="images/mr-sudz/background/UP TO 15 WASHES.png"
-                                        alt="Premium Car Wash Experience" class="feature-icon-pro">
+                                        alt="Premium Car Wash Experience" class="feature-icon-pro" loading="lazy">
                                 </div>
                                 <div class="feature-content">
                                     <h4 class="text-color mb-3">Premium Car Wash Experience</h4>
@@ -1188,7 +1206,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/1.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="car wash packages in columbus OH">
+                                            alt="car wash packages in columbus OH" loading="lazy">
                                     </div>
                                 </a>
 
@@ -1199,7 +1217,7 @@
                                         </div>
                                         <div class="absolute w-100 h-100 top-0 bg-dark hover-op-05"></div>
                                         <img src="/images/mr-sudz/gallery/2.jpg" class="img-fluid hover-scale-1-2"
-                                            alt="automatic car wash in columbus ohio">
+                                            alt="automatic car wash in columbus ohio" loading="lazy">
                                     </div>
                                 </a>
 
@@ -1695,83 +1713,231 @@
 
 
             <section class="jarallax" id="watch-videos">
-                <img src="images/mr-sudz/slider/slider.jpg" class="jarallax-img" alt="Experience the Shine">
-                <div class="container">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-lg-12 text-center">
-                            <div class="subtitle bg-color text-dark wow fadeInUp mb-3">FAQs</div>
-                            <h2 class="text-color mobile-small mb-0">Frequently Asked Questions</h2>
-                        </div>
+                <img src="images/mr-sudz/slider/slider.webp" class="jarallax-img" alt="Experience the Shine">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="subtitle bg-color text-dark wow fadeInUp mb-3">FAQs</div>
+                        <h2 class="text-color mobile-small mb-0">Frequently Asked Questions</h2>
+                    </div>
 
-                        <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                    <div class="container mt-5">
+                        <div class="row wow fadeInUp">
+                            <!-- Left Side FAQs -->
+                            <div class="col-lg-6">
+                                <div class="accordion">
+                                    <div class="accordion-section">
 
-                        <div class="col-md-8 offset-lg-2 wow fadeInUp">
-                            <div class="accordion">
-                                <div class="accordion-section">
+                                        <!-- FAQ 1 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-1">
+                                            <h4 class="mb-0 d-inline text-color">Do you really never close?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-1">
+                                            <p>
+                                                Yes. Mr. Sudz is open 24 hours a day, 7 days a week, 365 days a year —
+                                                rain,
+                                                snow, nights, weekends, and
+                                                holidays.
+                                            </p>
+                                        </div>
 
-                                    <!-- FAQ 1 -->
-                                    <div class="accordion-section-title" data-tab="#accordion-1">
-                                        <h4 class="mb-0 d-inline text-color">What services does Mr Sudz Car Wash offer?
-                                        </h4>
-                                    </div>
-                                    <div class="accordion-section-content text-light" id="accordion-1">
-                                        <p>
-                                            Mr Sudz offers premium exterior washes, vacuuming,
-                                            waxing,
-                                            detailing services, and unlimited wash membership plans to keep your car
-                                            spotless.
-                                        </p>
-                                    </div>
+                                        <!-- FAQ 2 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-2">
+                                            <h4 class="mb-0 d-inline text-color">Where are you located?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-2">
+                                            <p>
+                                                Mr. Sudz Car Wash is located at 5560 W Broad St, Columbus, Ohio 43228.
 
-                                    <!-- FAQ 2 -->
-                                    <div class="accordion-section-title" data-tab="#accordion-2">
-                                        <h4 class="mb-0 d-inline text-color">Do I need an appointment for a car wash?
-                                        </h4>
-                                    </div>
-                                    <div class="accordion-section-content text-light" id="accordion-2">
-                                        <p>
-                                            Appointments aren’t required. Drive in anytime—open 24/7, 365 days a year
-                                            for ultimate convenience and flexibility.
-                                        </p>
-                                    </div>
+                                            </p>
+                                        </div>
 
-                                    <!-- FAQ 3 -->
-                                    <div class="accordion-section-title" data-tab="#accordion-3">
-                                        <h4 class="mb-0 d-inline text-color">What is the Unlimited Wash Membership?</h4>
-                                    </div>
-                                    <div class="accordion-section-content text-light" id="accordion-3">
-                                        <p>
-                                            Our Unlimited Wash Membership allows you to wash your car as often as you
-                                            like
-                                            for one low monthly price. It’s the most convenient and cost-effective
-                                            option.
-                                        </p>
-                                    </div>
+                                        <!-- FAQ 3 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-3">
+                                            <h4 class="mb-0 d-inline text-color">Is Mr. Sudz a touchless car wash?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-3">
+                                            <p>
+                                                Absolutely. Mr. Sudz uses 100% touchless technology. No brushes or cloth
+                                                touch your vehicle, helping protect
+                                                your paint from scratches and swirl marks.
+                                            </p>
+                                        </div>
 
-                                    <!-- FAQ 4 -->
-                                    <div class="accordion-section-title" data-tab="#accordion-4">
-                                        <h4 class="mb-0 d-inline text-color">Is the car wash safe for my vehicle?</h4>
-                                    </div>
-                                    <div class="accordion-section-content text-light" id="accordion-4">
-                                        <p>
-                                            Yes. We use modern equipment, soft brushes, and eco-friendly cleaning
-                                            products
-                                            that are safe for all vehicle types and paint finishes.
-                                        </p>
-                                    </div>
+                                        <!-- FAQ 4 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-4">
+                                            <h4 class="mb-0 d-inline text-color">Is the wash safe for all paint types
+                                                and
+                                                finishes?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-4">
+                                            <p>
+                                                Yes. Our touchless system uses high pressure water and professionally
+                                                formulated detergents that are safe for
+                                                clear coats, wraps, ceramic coatings, and modern paint finishes.
 
-                                    <!-- FAQ 5 -->
-                                    <div class="accordion-section-title" data-tab="#accordion-5">
-                                        <h4 class="mb-0 d-inline text-color">How long does a car wash take?</h4>
-                                    </div>
-                                    <div class="accordion-section-content text-light" id="accordion-5">
-                                        <p>
-                                            A standard wash typically takes 3–5 minutes. A standard wash usually takes
-                                            3–5 minutes, making it quick and convenient even if you’re on a tight
-                                            schedule.
-                                        </p>
-                                    </div>
+                                            </p>
+                                        </div>
 
+                                        <!-- FAQ 5 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-5">
+                                            <h4 class="mb-0 d-inline text-color">Will the wash scratch my car?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-5">
+                                            <p>
+                                                No. Because there is no physical contact with your vehicle, the risk of
+                                                scratching is significantly reduced.
+
+                                            </p>
+                                        </div>
+                                        <!-- FAQ 6 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-6">
+                                            <h4 class="mb-0 d-inline text-color">How is Mr. Sudz different from tunnel
+                                                washes?
+
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-6">
+                                            <p>
+                                                Unlike traditional tunnel washes that use brushes and spinning material,
+                                                Mr.
+                                                Sudz is fully touchless. This means
+                                                less friction, reduced risk of paint damage, faster wash times, and 24/7
+                                                availability.
+
+
+                                            </p>
+                                        </div>
+                                        <!-- FAQ 7 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-7">
+                                            <h4 class="mb-0 d-inline text-color">How long does a wash take?
+
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-7">
+                                            <p>
+                                                Most washes take approximately 2–3 minutes.
+                                            </p>
+                                        </div>
+                                        <!-- FAQ 8 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-8">
+                                            <h4 class="mb-0 d-inline text-color">Do I need an appointment?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-8">
+                                            <p>
+                                                No appointment is required. Simply drive in whenever you are ready.
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side FAQs -->
+                            <div class="col-lg-6">
+                                <div class="accordion">
+                                    <div class="accordion-section">
+
+                                        <!-- FAQ 9 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-9">
+                                            <h4 class="mb-0 d-inline text-color">Is there a vehicle height or size
+                                                limit?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-9">
+                                            <p>
+                                                Yes. The maximum vehicle clearance is 8 feet 4 inches (8′4″).
+                                            </p>
+                                        </div>
+                                        <!-- FAQ 10 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-10">
+                                            <h4 class="mb-0 d-inline text-color">Are there vehicle restrictions?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-10">
+                                            <p>
+                                                Oversized vehicles or vehicles with roof racks, ladders, or external
+                                                accessories may not be eligible. Please
+                                                follow posted signage for safety.
+                                            </p>
+                                        </div>
+                                        <!-- FAQ 11 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-11">
+                                            <h4 class="mb-0 d-inline text-color">What is the Mr. Sudz Club membership?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-11">
+                                            <p>
+                                                The Sudz Club is a monthly membership that includes up to 15 touchless
+                                                washes per month per vehicle, with no
+                                                long term contracts.
+                                            </p>
+                                        </div>
+
+                                        <!-- FAQ 12 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-12">
+                                            <h4 class="mb-0 d-inline text-color">What’s included with my Sudz Club
+                                                membership?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-12">
+                                            <p>
+                                                Members receive 24/7 wash access, free self serve vacuums, and fast,
+                                                efficient cleaning anytime.
+
+                                            </p>
+                                        </div>
+
+                                        <!-- FAQ 13 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-13">
+                                            <h4 class="mb-0 d-inline text-color">Can I cancel my membership anytime?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-13">
+                                            <p>
+                                                Yes. You can cancel at any time. There are no cancellation fees or
+                                                hidden
+                                                terms.
+
+                                            </p>
+                                        </div>
+
+                                        <!-- FAQ 14 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-14">
+                                            <h4 class="mb-0 d-inline text-color">Do you offer fleet wash programs?
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-14">
+                                            <p>
+                                                Yes. Mr. Sudz offers custom fleet wash solutions for businesses of all
+                                                sizes, using touchless cleaning to protect
+                                                paint and decals.
+                                            </p>
+                                        </div>
+
+                                        <!-- FAQ 15 -->
+                                        <div class="accordion-section-title" data-tab="#accordion-15">
+                                            <h4 class="mb-0 d-inline text-color">How can I contact Mr. Sudz?
+
+                                            </h4>
+                                        </div>
+                                        <div class="accordion-section-content text-light" id="accordion-15">
+                                            <ul>
+                                                <li><b> Email:</b> <a
+                                                        href="mailto:office@mrsudzcarwash.com">office@mrsudzcarwash.com</a>
+                                                </li>
+                                                <li><b> Phone:</b> <a href="tel:+16148815215">+1 (614) 881-5215</a></li>
+                                                I’ll get back to you as soon as possible.
+                                            </ul>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1812,7 +1978,7 @@
                 </div>
             </section>
             <section class="jarallax text-light pt30 pb30">
-                <img src="images/mr-sudz/slider/slider.jpg" class="jarallax-img" alt="Mr Sudz Touchless Car Wash">
+                <img src="images/mr-sudz/slider/slider.webp" class="jarallax-img" alt="Mr Sudz Touchless Car Wash">
                 <div class="wow fadeInRight d-flex">
                     <div class="de-marquee-list wow text-white">
                         <div class="d-item">
@@ -2118,13 +2284,26 @@
         <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async
             defer></script>
 
-        <script src="js/custom.js"></script>
+        <!-- Lazy load video script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Lazy load the hero video
+                const video = document.querySelector('video source[data-src]');
+                if (video) {
+                    setTimeout(function () {
+                        video.src = video.dataset.src;
+                        video.parentElement.load();
+                    }, 1000); // Load video after 1 second delay
+                }
+            });
+        </script>
 
-        <script src="js/plugins.js"></script>
-        <script src="js/designesia.js"></script>
-        <script src="js/swiper.js"></script>
-        <script src="js/custom-marquee.js"></script>
-        <script src="js/custom-swiper-2.js"></script>
+        <script src="js/plugins.js" defer></script>
+        <script src="js/designesia.js" defer></script>
+        <script src="js/swiper.js" defer></script>
+        <script src="js/custom-marquee.js" defer></script>
+        <script src="js/custom-swiper-2.js" defer></script>
+        <script src="js/custom.js" defer></script>
 
         <!-- be sure this script is on the page and api.js is loaded (see above) -->
         <script>

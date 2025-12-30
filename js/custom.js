@@ -5,7 +5,7 @@
     const SHOW_DELAY_MS = 600;
     // When true, the Join Club popup will be shown automatically when the page finishes loading.
     // Toggle to `false` to disable auto-opening on load.
-    const AUTO_OPEN_ON_LOAD = true;
+    const AUTO_OPEN_ON_LOAD = false;
     const BASIC_WASH_BTN_ID = 'btn-basic-wash'; // ID for the Basic Wash button
 
     // Ensure the overlay exists in DOM; create it if missing (now that HTML is commented out)
