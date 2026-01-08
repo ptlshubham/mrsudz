@@ -1,0 +1,11 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Redirect any direct .html access to clean URL
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+?)\.html\ HTTP/
+RewriteRule ^(.+?)\.html$ /$1 [R=301,L]
+
+# Rewrite clean URLs to actual .html files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.html [L]
