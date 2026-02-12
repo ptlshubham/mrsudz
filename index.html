@@ -11,7 +11,30 @@
 
         gtag('config', 'G-BSX5P9281M');
     </script>
-
+    <!-- Google tag (gtag.js) event -->
+    <script>
+        gtag('event', 'qualify_lead', {
+            // <event_parameters>
+        });
+    </script>
+    <!-- Google tag (gtag.js) event - delayed navigation helper -->
+    <script>
+        // Helper function to delay opening a URL until a gtag event is sent.
+        // Call it in response to an action that should navigate to a URL.
+        function gtagSendEvent(url) {
+            var callback = function () {
+                if (typeof url === 'string') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'qualify_lead', {
+                'event_callback': callback,
+                'event_timeout': 2000,
+                // <event_parameters>
+            });
+            return false;
+        }
+    </script>
     <title>Mr. Sudz Car Wash – Best Touchless Car Wash in Columbus OH</title>
     <link rel="icon" href="images/mr-sudz/logo/favicon-16x16.png" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
